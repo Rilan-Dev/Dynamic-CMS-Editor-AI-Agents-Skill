@@ -1,0 +1,56 @@
+.dark {
+  --ae-bg: #101828;
+  --ae-text: #f9fafb;
+  --ae-muted: #98a2b3;
+  --ae-border: #344054;
+  --ae-soft: #29204a;
+  --ae-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+.dark .ae-header {
+  background: rgba(16, 24, 40, 0.96);
+}
+
+.dark .ae-intent-card,
+.dark .ae-scope,
+.dark .ae-button,
+.dark .ae-fine-grid input,
+.dark .ae-fine-grid select {
+  color: var(--ae-text);
+  background: #1d2939;
+  border-color: var(--ae-border);
+}
+
+.dark .ae-controls {
+  background: #182230;
+  border-color: var(--ae-border);
+}
+
+.dark .ae-segments {
+  background: #344054;
+}
+
+.dark .ae-segment {
+  color: #d0d5dd;
+}
+
+.dark .ae-segment[data-active="true"] {
+  color: #ddd6fe;
+  background: #1d2939;
+}
+
+.dark .ae-label,
+.dark .ae-close {
+  color: #d0d5dd;
+}
+
+.dark .ae-close:hover {
+  color: #fff;
+  background: #344054;
+}
+
+.dark .ae-confirm {
+  color: #fed7aa;
+  background: #431407;
+  border-color: #9a3412;
+}

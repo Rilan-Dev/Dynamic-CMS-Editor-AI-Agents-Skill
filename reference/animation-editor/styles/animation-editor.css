@@ -1,0 +1,115 @@
+:root {
+  --ae-accent: #7c3aed;
+  --ae-accent-strong: #6d28d9;
+  --ae-bg: #ffffff;
+  --ae-text: #172033;
+  --ae-muted: #667085;
+  --ae-border: #e4e7ec;
+  --ae-soft: #f5f3ff;
+  --ae-success: #067647;
+  --ae-error: #b42318;
+  --ae-radius: 14px;
+  --ae-shadow: 0 18px 60px rgba(16, 24, 40, 0.2);
+}
+
+.ae-target-outline {
+  outline: 2px solid color-mix(in srgb, var(--ae-accent) 45%, transparent);
+  outline-offset: 3px;
+}
+
+.ae-badge {
+  position: fixed;
+  z-index: 1320;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 999px;
+  color: #fff;
+  background: var(--ae-accent);
+  box-shadow: 0 8px 24px rgba(76, 29, 149, .3);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(.92);
+  transition: transform .15s ease, background .15s ease, opacity .15s ease;
+}
+.ae-badge[data-visible="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.ae-badge:hover,
+.ae-badge:focus-visible {
+  opacity: 1;
+  background: var(--ae-accent-strong);
+  transform: scale(1.06);
+  outline: 3px solid rgba(124,58,237,.25);
+}
+
+.ae-root {
+  position: fixed;
+  z-index: 1330;
+  width: min(390px, calc(100vw - 24px));
+  max-height: min(680px, calc(100vh - 24px));
+  overflow: auto;
+  color: var(--ae-text);
+  background: var(--ae-bg);
+  border: 1px solid var(--ae-border);
+  border-radius: var(--ae-radius);
+  box-shadow: var(--ae-shadow);
+  font-family: inherit;
+}
+.ae-root * { box-sizing: border-box; }
+.ae-header { position: sticky; top: 0; z-index: 2; display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:16px; background:rgba(255,255,255,.96); border-bottom:1px solid var(--ae-border); backdrop-filter: blur(10px); }
+.ae-title { margin:0; font-size:15px; font-weight:750; }
+.ae-subtitle { margin:4px 0 0; color:var(--ae-muted); font-size:12px; }
+.ae-close { width:30px; height:30px; border:0; border-radius:8px; background:transparent; cursor:pointer; font-size:18px; color:var(--ae-muted); }
+.ae-close:hover { background:#f2f4f7; color:var(--ae-text); }
+.ae-body { display:grid; gap:16px; padding:16px; }
+.ae-question { margin:0; font-size:14px; font-weight:700; }
+.ae-group { display:grid; gap:8px; }
+.ae-group-title { margin:0; color:var(--ae-muted); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.ae-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.ae-intent-card { display:grid; grid-template-columns:36px 1fr; gap:9px; align-items:center; min-height:70px; padding:10px; text-align:left; border:1px solid var(--ae-border); border-radius:12px; background:#fff; cursor:pointer; transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+.ae-intent-card:hover,.ae-intent-card:focus-visible { border-color:var(--ae-accent); box-shadow:0 0 0 3px rgba(124,58,237,.12); transform:translateY(-1px); outline:none; }
+.ae-intent-card[data-active="true"] { border-color:var(--ae-accent); background:var(--ae-soft); }
+.ae-sample { display:grid; place-items:center; width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg,#ede9fe,#ddd6fe); color:var(--ae-accent); font-size:18px; animation:ae-sample 1.8s ease-in-out infinite; }
+.ae-intent-card strong { display:block; font-size:12px; line-height:1.25; }
+.ae-intent-card small { display:block; margin-top:3px; color:var(--ae-muted); font-size:10px; line-height:1.25; }
+@keyframes ae-sample { 0%,100% { opacity:.55; transform:translateY(3px) scale(.96); } 50% { opacity:1; transform:translateY(-2px) scale(1); } }
+.ae-controls { display:grid; gap:12px; padding:12px; border:1px solid var(--ae-border); border-radius:12px; background:#fafafa; }
+.ae-control { display:grid; gap:7px; }
+.ae-label { font-size:11px; font-weight:750; color:#344054; }
+.ae-segments { display:grid; grid-auto-flow:column; grid-auto-columns:1fr; gap:4px; padding:3px; border-radius:10px; background:#eef0f3; }
+.ae-segment { min-height:32px; padding:5px 7px; border:0; border-radius:8px; background:transparent; color:#475467; cursor:pointer; font-size:11px; font-weight:650; }
+.ae-segment[data-active="true"] { color:var(--ae-accent-strong); background:#fff; box-shadow:0 1px 4px rgba(16,24,40,.12); }
+.ae-scope-list { display:grid; gap:6px; }
+.ae-scope { display:flex; align-items:flex-start; gap:9px; padding:9px 10px; border:1px solid var(--ae-border); border-radius:10px; background:#fff; cursor:pointer; text-align:left; }
+.ae-scope[data-active="true"] { border-color:var(--ae-accent); background:var(--ae-soft); }
+.ae-scope strong { display:block; font-size:12px; }
+.ae-scope small { display:block; margin-top:2px; color:var(--ae-muted); font-size:10px; }
+.ae-confirm { display:grid; gap:10px; padding:12px; border-radius:12px; background:#fff7ed; border:1px solid #fed7aa; font-size:12px; }
+.ae-actions { display:flex; justify-content:flex-end; gap:8px; }
+.ae-button { min-height:34px; padding:7px 12px; border:1px solid var(--ae-border); border-radius:9px; background:#fff; cursor:pointer; font-size:11px; font-weight:700; }
+.ae-button--primary { border-color:var(--ae-accent); color:#fff; background:var(--ae-accent); }
+.ae-status { display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:24px; color:var(--ae-muted); font-size:11px; }
+.ae-status[data-tone="success"] { color:var(--ae-success); }
+.ae-status[data-tone="error"] { color:var(--ae-error); }
+.ae-disclosure { border-top:1px solid var(--ae-border); padding-top:12px; }
+.ae-disclosure summary { cursor:pointer; font-size:12px; font-weight:700; }
+.ae-fine-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
+.ae-fine-grid label { display:grid; gap:5px; font-size:10px; font-weight:700; color:#475467; }
+.ae-fine-grid input,.ae-fine-grid select { width:100%; min-height:34px; border:1px solid var(--ae-border); border-radius:8px; padding:6px 8px; background:#fff; color:var(--ae-text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ae-sample { animation:none; opacity:1; transform:none; }
+  .ae-intent-card,.ae-badge { transition:none; }
+}
+
+@media (max-width: 640px) {
+  .ae-root { left:12px !important; right:12px; bottom:12px; top:auto !important; width:auto; max-height:min(72vh,620px); border-radius:18px; }
+  .ae-grid { grid-template-columns:1fr; }
+}

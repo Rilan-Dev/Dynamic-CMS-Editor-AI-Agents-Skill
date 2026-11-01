@@ -7,6 +7,10 @@ description: Use when building a Dynamic CMS system with inline editing, typed f
 > **Mandatory for existing website migrations:** Read [WEBSITE_MIGRATION_PLAYBOOK.md](WEBSITE_MIGRATION_PLAYBOOK.md) and [MIGRATION_ACCEPTANCE_CONTRACT.md](MIGRATION_ACCEPTANCE_CONTRACT.md) before inspecting or modifying a target repository. Its discovery, visual-parity, security, and acceptance gates override any SMTS-specific example below. Never assume the target framework or change its UI/UX without explicit approval.
 
 
+## Framework-specific migration guidance
+
+Before modifying an existing website, inspect its framework and read the corresponding adapter: [Next.js](frameworks/nextjs.md), [React/Vite](frameworks/react-vite.md), [Vue/Nuxt](frameworks/vue-nuxt.md), [Angular](frameworks/angular.md), or [static HTML](frameworks/static-html.md). Consult [SMTS reference audit](SMTS_REFERENCE_AUDIT.md) for verified and unverified claims. Execute the repository validation and framework contract tests; these do not replace live integration or visual regression testing.
+
 ## Overview
 
 This skill provides a complete blueprint for building a **Dynamic CMS system** with:

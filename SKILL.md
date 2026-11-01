@@ -4,6 +4,8 @@ description: Use when building a Dynamic CMS system with inline editing, typed f
 ---
 
 # Dynamic CMS Generator
+> **Mandatory for existing website migrations:** Read [WEBSITE_MIGRATION_PLAYBOOK.md](WEBSITE_MIGRATION_PLAYBOOK.md) before inspecting or modifying a target repository. Its discovery, visual-parity, security, and acceptance gates override any SMTS-specific example below. Never assume the target framework or change its UI/UX without explicit approval.
+
 
 ## Overview
 

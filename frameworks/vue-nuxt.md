@@ -1,0 +1,2 @@
+# Vue / Nuxt migration adapter
+Distinguish Vue SPA from Nuxt SSR/hybrid, inspect composables, Pinia, Vue Router, Nuxt server routes and Nitro deployment. Preserve templates, directives, transitions, scoped CSS, SEO head and hydration. Use framework-native reactive content adapters; server-only authorization for edits, upload and publish. Validate cached public payload refresh, server/client parity, localized routes and image handling. Never transplant React hooks or Next.js route handlers.

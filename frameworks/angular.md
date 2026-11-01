@@ -1,0 +1,2 @@
+# Angular migration adapter
+Inspect Angular version, standalone components versus NgModules, router, signals/RxJS state, SSR/hydration and DI services. Preserve templates, change detection, animations, styles and route guards. Provide CMS read/edit adapters via injectable services and server-side authorization, not guards alone. Use safe Angular template bindings; avoid bypassSecurityTrustHtml for untrusted CMS content. Verify SSR hydration, lazy routes, forms, accessibility and production configuration secrecy.

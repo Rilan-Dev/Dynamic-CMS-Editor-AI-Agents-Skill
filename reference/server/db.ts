@@ -1,27 +1,43 @@
 import { createSupabaseDatabase } from "@/lib/server/supabaseDatabase";
+import { getDatabaseSchema } from "@/lib/server/databaseSchema";
+import type { LeadInput } from "@/lib/schemas";
 
 const connectionString = process.env.DATABASE_URL;
+/** Small on purpose — see the pool options below. */
+export const MAX_POOL_CLIENTS = 3;
 let pool: any = null;
+let schemaReady: Promise<void> | null = null;
 
 async function getPoolInstance(): Promise<any> {
   if (pool) return pool;
   if (!connectionString) return null;
 
   const { Pool } = await import("pg");
+  const schema = getDatabaseSchema();
   pool = new Pool({
     connectionString,
-    // SSL is opt-in via DATABASE_SSL=true (managed providers like
-    // Supabase). A self-hosted / local Postgres has no TLS, so gating
-    // on NODE_ENV would wrongly force SSL and break the connection.
+    options: `-c search_path=${schema}`,
     ssl:
       process.env.DATABASE_SSL === "true"
         ? { rejectUnauthorized: false }
         : undefined,
+    max: MAX_POOL_CLIENTS,
+    idleTimeoutMillis: 10_000,
+    connectionTimeoutMillis: 10_000,
   });
   return pool;
 }
 
 async function ensureSchema() {
+  if (schemaReady) return schemaReady;
+  schemaReady = runSchemaSetup().catch((error) => {
+    schemaReady = null;
+    throw error;
+  });
+  return schemaReady;
+}
+
+async function runSchemaSetup() {
   const db = await getPoolInstance();
   if (!db) return;
   await db.query(`
@@ -32,17 +48,6 @@ async function ensureSchema() {
       version INTEGER NOT NULL DEFAULT 0,
       updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
       published_at TIMESTAMPTZ
-    )
-  `);
-  await db.query(`
-    CREATE TABLE IF NOT EXISTS leads (
-      id BIGSERIAL PRIMARY KEY,
-      name TEXT NOT NULL,
-      email TEXT NOT NULL,
-      phone TEXT,
-      message TEXT NOT NULL,
-      source TEXT,
-      created_at TIMESTAMPTZ NOT NULL DEFAULT now()
     )
   `);
 }
@@ -68,29 +73,22 @@ export async function getPool(): Promise<any | null> {
   return db;
 }
 
-export interface LeadInput {
-  name: string;
-  email: string;
-  phone?: string;
-  message: string;
-  source?: string;
-}
-
-/** Persist a contact-form lead. Returns false (never throws) if the DB
- *  is not configured, so email delivery is never blocked by storage. */
 export async function saveLead(lead: LeadInput): Promise<boolean> {
   try {
     const db = await getPool();
     if (db) {
       await db.query(
-        `INSERT INTO leads (name, email, phone, message, source)
-         VALUES ($1, $2, $3, $4, $5)`,
+        `INSERT INTO leads
+           (name, email, phone, message, service, source, source_page)
+         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
         [
           lead.name,
           lead.email,
           lead.phone ?? null,
           lead.message,
-          lead.source ?? "contact-form",
+          lead.service,
+          lead.source,
+          lead.sourcePage,
         ],
       );
       return true;
@@ -103,7 +101,9 @@ export async function saveLead(lead: LeadInput): Promise<boolean> {
       email: lead.email,
       phone: lead.phone ?? null,
       message: lead.message,
-      source: lead.source ?? "contact-form",
+      service: lead.service,
+      source: lead.source,
+      source_page: lead.sourcePage,
     });
     return true;
   } catch (e) {

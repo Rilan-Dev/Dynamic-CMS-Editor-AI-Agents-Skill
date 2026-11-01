@@ -243,7 +243,7 @@ export function IconSelector({
             type="button"
             data-cms-ui
             className={cn(
-              "flex items-center gap-2 rounded-md border bg-white px-3 py-2 text-sm shadow-sm hover:bg-muted/50",
+              "flex items-center gap-2 rounded-md border bg-background px-3 py-2 text-sm shadow-sm hover:bg-muted/50",
               className,
             )}
           >

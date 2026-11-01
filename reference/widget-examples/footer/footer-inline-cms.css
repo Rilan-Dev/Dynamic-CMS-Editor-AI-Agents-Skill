@@ -1,0 +1,350 @@
+/* Footer inline CMS — loaded globally but active only while body.cms-editing is set. */
+body.cms-editing .cms-add--icon-only {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  flex: 0 0 auto;
+}
+
+body.cms-editing .cms-add--icon-only:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.08);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: none;
+}
+
+body.cms-editing .cms-footer-inline-editor {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+body.cms-editing .cms-footer-social-grid,
+body.cms-editing .cms-footer-service-edit-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.cms-editing .cms-footer-social-card,
+body.cms-editing .cms-footer-service-row,
+body.cms-editing .cms-footer-inline-tray {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(30, 41, 59, 0.94),
+    rgba(15, 23, 42, 0.9)
+  );
+  box-shadow: 0 16px 35px -24px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+body.cms-editing .cms-footer-social-card {
+  display: grid;
+  gap: 9px;
+  padding: 11px;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+body.cms-editing .cms-footer-social-card:hover,
+body.cms-editing .cms-footer-service-row:hover {
+  border-color: rgba(74, 222, 128, 0.42);
+  box-shadow: 0 16px 35px -22px rgba(21, 128, 61, 0.55);
+}
+
+body.cms-editing .cms-footer-social-card--disabled {
+  opacity: 0.72;
+}
+
+body.cms-editing .cms-footer-social-card--error,
+body.cms-editing .cms-footer-service-row--error {
+  border-color: rgba(248, 113, 113, 0.62);
+  background: linear-gradient(
+    145deg,
+    rgba(69, 10, 10, 0.76),
+    rgba(30, 41, 59, 0.94)
+  );
+}
+
+body.cms-editing .cms-footer-social-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+body.cms-editing .cms-footer-social-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  color: #dcfce7;
+  background: rgba(21, 128, 61, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(74, 222, 128, 0.18);
+}
+
+body.cms-editing .cms-footer-social-label {
+  min-width: 0;
+  flex: 1;
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+body.cms-editing .cms-footer-inline-input,
+body.cms-editing .cms-footer-service-search input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 9px;
+  background: rgba(2, 6, 23, 0.58);
+  color: #f8fafc;
+  font-size: 12px;
+  line-height: 1.35;
+  padding: 8px 10px;
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+}
+
+body.cms-editing .cms-footer-inline-input::placeholder,
+body.cms-editing .cms-footer-service-search input::placeholder {
+  color: #94a3b8;
+}
+
+body.cms-editing .cms-footer-inline-input:focus,
+body.cms-editing .cms-footer-service-search input:focus {
+  border-color: #22c55e;
+  background: rgba(2, 6, 23, 0.82);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+body.cms-editing .cms-footer-inline-error {
+  margin: 0;
+  color: #fecaca;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+body.cms-editing .cms-footer-inline-add-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+}
+
+body.cms-editing .cms-footer-inline-tray {
+  display: grid;
+  gap: 10px;
+  padding: 11px;
+  overflow: hidden;
+  animation: cms-footer-inline-reveal 160ms ease-out;
+}
+
+body.cms-editing .cms-footer-social-add-tray {
+  grid-template-columns: repeat(auto-fit, minmax(38px, 1fr));
+}
+
+body.cms-editing .cms-footer-platform-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 10px;
+  color: #cbd5e1;
+  background: rgba(15, 23, 42, 0.72);
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background-color 150ms ease,
+    transform 100ms ease;
+}
+
+body.cms-editing .cms-footer-platform-chip:hover,
+body.cms-editing .cms-footer-platform-chip:focus-visible {
+  color: #ffffff;
+  border-color: rgba(74, 222, 128, 0.62);
+  background: rgba(21, 128, 61, 0.62);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+body.cms-editing .cms-footer-service-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 9px 10px;
+}
+
+body.cms-editing .cms-footer-service-row > svg,
+body.cms-editing .cms-footer-service-row > img {
+  color: #86efac;
+}
+
+body.cms-editing .cms-footer-service-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+body.cms-editing .cms-footer-service-title,
+body.cms-editing .cms-footer-service-detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.cms-editing .cms-footer-service-title {
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+body.cms-editing .cms-footer-service-detail {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+body.cms-editing .cms-footer-service-row--error .cms-footer-service-title,
+body.cms-editing .cms-footer-service-row--error .cms-footer-service-detail {
+  color: #fecaca;
+}
+
+body.cms-editing .cms-footer-service-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+}
+
+body.cms-editing .cms-footer-service-search input {
+  flex: 1;
+}
+
+body.cms-editing .cms-footer-service-options {
+  display: grid;
+  gap: 7px;
+  max-height: 240px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+body.cms-editing .cms-footer-service-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 9px;
+  padding: 8px 9px;
+  color: #cbd5e1;
+  background: rgba(2, 6, 23, 0.48);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+body.cms-editing .cms-footer-service-option span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.cms-editing .cms-footer-service-option:hover,
+body.cms-editing .cms-footer-service-option:focus-visible {
+  color: #ffffff;
+  border-color: rgba(74, 222, 128, 0.5);
+  background: rgba(21, 128, 61, 0.38);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+body.cms-editing .cms-footer-inline-empty,
+body.cms-editing .cms-footer-inline-limit {
+  margin: 0;
+  border-radius: 9px;
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+body.cms-editing .cms-footer-inline-empty {
+  color: #cbd5e1;
+  border: 1px dashed rgba(148, 163, 184, 0.26);
+  background: rgba(15, 23, 42, 0.48);
+}
+
+body.cms-editing .cms-footer-inline-limit {
+  color: #fde68a;
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  background: rgba(120, 53, 15, 0.24);
+}
+
+body.cms-editing .cms-inline-list-controls {
+  max-width: 100%;
+}
+
+@keyframes cms-footer-inline-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  body.cms-editing .cms-footer-social-card-head,
+  body.cms-editing .cms-footer-service-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  body.cms-editing .cms-footer-social-card-head .cms-inline-list-controls,
+  body.cms-editing .cms-footer-service-row .cms-inline-list-controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  body.cms-editing .cms-footer-service-copy {
+    max-width: calc(100% - 34px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.cms-editing .cms-footer-inline-tray,
+  body.cms-editing .cms-footer-social-card,
+  body.cms-editing .cms-footer-service-row,
+  body.cms-editing .cms-footer-platform-chip,
+  body.cms-editing .cms-footer-service-option {
+    animation: none;
+    transition: none;
+  }
+}

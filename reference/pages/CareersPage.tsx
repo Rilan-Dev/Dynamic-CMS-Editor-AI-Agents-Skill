@@ -58,7 +58,7 @@ function SectionIntro({
         type="text"
         label={`${animationPrefix} eyebrow`}
         as="p"
-        className="text-sm font-bold uppercase tracking-[0.2em] text-green-700"
+        className="text-sm font-bold uppercase tracking-[0.2em] text-brand"
       >
         <E
           path={[basePath, "eyebrow"]}
@@ -71,7 +71,7 @@ function SectionIntro({
         type="heading"
         label={`${animationPrefix} heading`}
         as="h2"
-        className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl"
+        className="mt-3 text-3xl font-bold text-foreground md:text-4xl"
       >
         <E
           path={[basePath, "title"]}
@@ -84,7 +84,7 @@ function SectionIntro({
         type="text"
         label={`${animationPrefix} description`}
         as="p"
-        className="mt-4 text-lg leading-8 text-gray-700"
+        className="mt-4 text-lg leading-8 text-muted-foreground"
       >
         <E
           path={[basePath, "description"]}
@@ -244,7 +244,7 @@ export default function CareersPage({ content }: { content: JsonObject }) {
       <AnimatedSection
         id="why-join"
         label="Why work with SMTS"
-        className="bg-white py-16 lg:py-20"
+        className="bg-background py-16 lg:py-20"
       >
         <div className="container mx-auto px-4 md:px-6">
           <SectionIntro
@@ -276,7 +276,7 @@ export default function CareersPage({ content }: { content: JsonObject }) {
       <AnimatedSection
         id="benefits"
         label="Employee benefits"
-        className="bg-white py-16 lg:py-20"
+        className="bg-background py-16 lg:py-20"
       >
         <div className="container mx-auto px-4 md:px-6">
           <SectionIntro
@@ -306,7 +306,7 @@ export default function CareersPage({ content }: { content: JsonObject }) {
       <AnimatedSection
         id="open-positions"
         label="Open careers positions"
-        className="bg-gray-50 py-16 lg:py-20"
+        className="bg-muted py-16 lg:py-20"
       >
         <div className="container mx-auto px-4 md:px-6">
           <SectionIntro
@@ -359,21 +359,21 @@ export default function CareersPage({ content }: { content: JsonObject }) {
               }`}
               data-cms-ui
             >
-              <span className="mr-2 text-sm font-semibold text-gray-900">
+              <span className="mr-2 text-sm font-semibold text-neutral-900">
                 Applications email:
               </span>
               <E
                 path={["applicationEmail"]}
                 value={applicationEmail}
                 as="span"
-                className="text-sm text-gray-900"
+                className="text-sm text-neutral-900"
               />
               {!validApplicationEmail && (
                 <p className="mt-2 text-sm font-semibold text-red-700" role="status">
                   Enter a valid mailbox address before publishing.
                 </p>
               )}
-              <p className="mt-2 text-xs text-gray-600">
+              <p className="mt-2 text-xs text-neutral-600">
                 Filters do not hide draft repair records while CMS editing is active.
               </p>
             </div>
@@ -402,16 +402,16 @@ export default function CareersPage({ content }: { content: JsonObject }) {
           {displayedEntries.length === 0 && (
             <div
               aria-live="polite"
-              className="mt-6 rounded-xl border border-dashed border-gray-300 bg-white px-6 py-10 text-center"
+              className="mt-6 rounded-xl border border-dashed border-border bg-card px-6 py-10 text-center"
             >
-              <h3 className="text-xl font-bold text-gray-900">
+              <h3 className="text-xl font-bold text-foreground">
                 <E
                   path={["jobsIntro", "emptyTitle"]}
                   value={String(jobsIntro.emptyTitle ?? "No open positions")}
                   as="span"
                 />
               </h3>
-              <p className="mx-auto mt-3 max-w-2xl text-gray-600">
+              <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
                 <E
                   path={["jobsIntro", "emptyDescription"]}
                   value={String(jobsIntro.emptyDescription ?? "")}

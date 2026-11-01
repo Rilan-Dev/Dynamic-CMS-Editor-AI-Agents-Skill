@@ -3,6 +3,7 @@ import path from "path";
 import type { JsonObject } from "@/components/cms/json";
 import { getPool } from "@/lib/server/db";
 import { createSupabaseDatabase } from "@/lib/server/supabaseDatabase";
+import { CmsVersionConflictError, isVersionConflict } from "@/lib/server/cmsRelease";
 
 /**
  * CMS content store supporting optional Postgres and file fallback.
@@ -12,6 +13,7 @@ export interface PageContentEntry {
   draft: JsonObject | null;
   published: JsonObject | null;
   version: number;
+  draftRevision: number;
   updatedAt: string;
   publishedAt: string | null;
 }
@@ -31,6 +33,7 @@ function rowToEntry(row: any): PageContentEntry | null {
     draft: row.draft ?? null,
     published: row.published ?? null,
     version: row.version ?? 0,
+    draftRevision: Number(row.draft_revision ?? row.draftRevision ?? 0),
     updatedAt: row.updated_at
       ? new Date(row.updated_at).toISOString()
       : new Date().toISOString(),
@@ -44,7 +47,7 @@ async function dbGetEntry(slug: string): Promise<PageContentEntry | null> {
   const pool = await getPool();
   if (pool) {
     const result = await pool.query(
-      `SELECT slug, draft, published, version, updated_at, published_at FROM page_contents WHERE slug = $1`,
+      `SELECT slug, draft, published, version, draft_revision, updated_at, published_at FROM page_contents WHERE slug = $1`,
       [slug],
     );
     return rowToEntry(result.rows[0]);
@@ -53,43 +56,6 @@ async function dbGetEntry(slug: string): Promise<PageContentEntry | null> {
   const supabase = createSupabaseDatabase();
   if (!supabase) return null;
   return rowToEntry(await supabase.getPage(slug));
-}
-
-async function dbWriteEntry(entry: PageContentEntry): Promise<boolean> {
-  const pool = await getPool();
-  if (pool) {
-    await pool.query(
-      `INSERT INTO page_contents (slug, draft, published, version, updated_at, published_at)
-       VALUES ($1, $2, $3, $4, $5, $6)
-       ON CONFLICT (slug) DO UPDATE SET
-         draft = EXCLUDED.draft,
-         published = EXCLUDED.published,
-         version = EXCLUDED.version,
-         updated_at = EXCLUDED.updated_at,
-         published_at = EXCLUDED.published_at`,
-      [
-        entry.slug,
-        entry.draft,
-        entry.published,
-        entry.version,
-        entry.updatedAt,
-        entry.publishedAt,
-      ],
-    );
-    return true;
-  }
-
-  const supabase = createSupabaseDatabase();
-  if (!supabase) return false;
-  await supabase.putPage({
-    slug: entry.slug,
-    draft: entry.draft,
-    published: entry.published,
-    version: entry.version,
-    updated_at: entry.updatedAt,
-    published_at: entry.publishedAt,
-  });
-  return true;
 }
 
 export async function getEntry(slug: string): Promise<PageContentEntry | null> {
@@ -105,60 +71,108 @@ export async function getEntry(slug: string): Promise<PageContentEntry | null> {
   }
 }
 
-async function writeEntry(entry: PageContentEntry): Promise<void> {
-  if (await dbWriteEntry(entry)) return;
-
-  await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.writeFile(
-    fileFor(entry.slug),
-    JSON.stringify(entry, null, 2),
-    "utf8",
-  );
-}
-
+/** Writes are conditional: stale browser tabs cannot overwrite another editor. */
 export async function saveDraft(
-  slug: string,
-  draft: JsonObject,
+  slug: string, draft: JsonObject, expectedVersion: number, expectedDraftRevision: number,
 ): Promise<PageContentEntry> {
-  const existing = await getEntry(slug);
-  const entry: PageContentEntry = {
-    slug,
-    draft,
-    published: existing?.published ?? null,
-    version: existing?.version ?? 0,
-    updatedAt: new Date().toISOString(),
-    publishedAt: existing?.publishedAt ?? null,
-  };
-  await writeEntry(entry);
-  return entry;
-}
-
-export async function publish(slug: string): Promise<PageContentEntry | null> {
-  const existing = await getEntry(slug);
-  if (!existing?.draft) return existing;
-  const entry: PageContentEntry = {
-    ...existing,
-    published: existing.draft,
-    version: existing.version + 1,
-    publishedAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  };
-  await writeEntry(entry);
-  return entry;
+  if (!SLUG_RE.test(slug) || !draft || typeof draft !== "object" || Array.isArray(draft)
+      || !Number.isSafeInteger(expectedVersion) || expectedVersion < 0
+      || !Number.isSafeInteger(expectedDraftRevision) || expectedDraftRevision < 0) {
+    throw new Error("Invalid draft preconditions");
+  }
+  try {
+    const pool = await getPool();
+    if (pool) {
+      const result = await pool.query(
+        "SELECT cms_save_draft($1, $2::jsonb, $3, $4) AS entry",
+        [slug, JSON.stringify(draft), expectedVersion, expectedDraftRevision],
+      );
+      return rowToEntry(result.rows[0].entry)!;
+    }
+    const supabase = createSupabaseDatabase();
+    if (!supabase) throw new Error("CMS draft saving requires configured database storage");
+    return rowToEntry(await supabase.saveDraftCas(slug, draft, expectedVersion, expectedDraftRevision))!;
+  } catch (error) {
+    if (isVersionConflict(error)) throw new CmsVersionConflictError();
+    throw error;
+  }
 }
 
 export async function discardDraft(
-  slug: string,
-): Promise<PageContentEntry | null> {
-  const existing = await getEntry(slug);
-  if (!existing) return null;
-  const entry: PageContentEntry = {
-    ...existing,
-    draft: existing.published,
-    updatedAt: new Date().toISOString(),
-  };
-  await writeEntry(entry);
-  return entry;
+  slug: string, expectedVersion: number, expectedDraftRevision: number,
+): Promise<PageContentEntry> {
+  if (!SLUG_RE.test(slug) || !Number.isSafeInteger(expectedVersion) || !Number.isSafeInteger(expectedDraftRevision))
+    throw new Error("Invalid discard preconditions");
+  try {
+    const pool = await getPool();
+    if (pool) {
+      const result = await pool.query("SELECT cms_discard_draft($1, $2, $3) AS entry", [
+        slug, expectedVersion, expectedDraftRevision,
+      ]);
+      return rowToEntry(result.rows[0].entry)!;
+    }
+    const supabase = createSupabaseDatabase();
+    if (!supabase) throw new Error("CMS discard requires configured database storage");
+    return rowToEntry(await supabase.discardDraftCas(slug, expectedVersion, expectedDraftRevision))!;
+  } catch (error) {
+    if (isVersionConflict(error)) throw new CmsVersionConflictError();
+    throw error;
+  }
+}
+
+const PREFIX_RE = /^[a-z0-9-]+$/;
+
+/**
+ * Every published document whose slug starts with `prefix`, in one read.
+ * The blog listing uses it so post cards never have to be duplicated into
+ * an index document. Unpublished documents are omitted.
+ */
+export async function listPublishedByPrefix(
+  prefix: string,
+): Promise<{ slug: string; published: JsonObject }[]> {
+  if (!PREFIX_RE.test(prefix)) throw new Error(`Invalid prefix: ${prefix}`);
+
+  const pool = await getPool();
+  if (pool) {
+    const result = await pool.query(
+      `SELECT slug, published FROM page_contents
+       WHERE slug LIKE $1 AND published IS NOT NULL
+       ORDER BY slug`,
+      [`${prefix}%`],
+    );
+    return (result.rows as { slug: string; published: JsonObject | null }[])
+      .filter((row) => !!row.published)
+      .map((row) => ({ slug: row.slug, published: row.published as JsonObject }));
+  }
+
+  const supabase = createSupabaseDatabase();
+  if (supabase) {
+    const rows = await supabase.listPublishedByPrefix(prefix);
+    return rows
+      .filter((row) => !!row.published)
+      .map((row) => ({ slug: row.slug, published: row.published as JsonObject }));
+  }
+
+  try {
+    const names = await fs.readdir(DATA_DIR);
+    const entries = await Promise.all(
+      names
+        .filter((name) => name.startsWith(prefix) && name.endsWith(".json"))
+        .map(async (name) => {
+          const raw = await fs.readFile(path.join(DATA_DIR, name), "utf8");
+          const entry = JSON.parse(raw) as PageContentEntry;
+          return entry.published
+            ? { slug: entry.slug, published: entry.published }
+            : null;
+        }),
+    );
+    return entries.filter(
+      (entry): entry is { slug: string; published: JsonObject } => !!entry,
+    );
+  } catch {
+    // No store is readable; the caller renders registry defaults instead.
+    return [];
+  }
 }
 
 export async function getPublished(slug: string): Promise<JsonObject | null> {

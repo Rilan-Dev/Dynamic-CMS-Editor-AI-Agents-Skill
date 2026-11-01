@@ -1,0 +1,1740 @@
+{
+  "schemaVersion": 1,
+  "description": "Pinned Git blob-exact reference paths, excluding public media binaries and unrelated infrastructure",
+  "source": {
+    "repository": "urbanNexusTech/smtswebsite",
+    "branch": "UAT",
+    "commit": "efcfa632cf9ba6e36c476a2a6ca3b589b942db14",
+    "tree": "8b5d66f812a3f95cf01a5bcce00c1c642af773ce"
+  },
+  "files": [
+    {
+      "source": "app/api/assets/route.ts",
+      "path": "reference/app/api/assets/route.ts",
+      "gitBlobSha": "f620cafc636a827d4f0dbe759f9586b214412ab0",
+      "bytes": 47
+    },
+    {
+      "source": "app/api/cms/history/[slug]/[version]/restore/route.ts",
+      "path": "reference/app/api/cms/history/[slug]/[version]/restore/route.ts",
+      "gitBlobSha": "70d0d3b95a7160cd59d8829b46e8826672ea0439",
+      "bytes": 77
+    },
+    {
+      "source": "app/api/cms/history/[slug]/[version]/route.ts",
+      "path": "reference/app/api/cms/history/[slug]/[version]/route.ts",
+      "gitBlobSha": "2dcff9a7508b0c086d98c497ad3597296f201e33",
+      "bytes": 68
+    },
+    {
+      "source": "app/api/cms/history/[slug]/route.ts",
+      "path": "reference/app/api/cms/history/[slug]/route.ts",
+      "gitBlobSha": "4a51d59575b94b6473ad6e672eb6f008c8d6c51c",
+      "bytes": 58
+    },
+    {
+      "source": "app/api/cms/pages/[slug]/route.ts",
+      "path": "reference/app/api/cms/pages/[slug]/route.ts",
+      "gitBlobSha": "d570c77998163d981849a317d2636c94b5679728",
+      "bytes": 75
+    },
+    {
+      "source": "app/api/cms/releases/route.ts",
+      "path": "reference/app/api/cms/releases/route.ts",
+      "gitBlobSha": "c29c33a90d748d80b349416e69cc0fd18b024f7e",
+      "bytes": 53
+    },
+    {
+      "source": "app/api/cms/session/route.ts",
+      "path": "reference/app/api/cms/session/route.ts",
+      "gitBlobSha": "307978440859cbbec1c843d207ffc5e30181d340",
+      "bytes": 65
+    },
+    {
+      "source": "app/layout.tsx",
+      "path": "reference/app/layout.tsx",
+      "gitBlobSha": "304a67b051f35b7f38478da879c41b6baf6379ce",
+      "bytes": 3612
+    },
+    {
+      "source": "app/media/[name]/route.ts",
+      "path": "reference/app/media/[name]/route.ts",
+      "gitBlobSha": "932cf60a7bcbc63344844c45afa8046fd463af50",
+      "bytes": 52
+    },
+    {
+      "source": "app/page.tsx",
+      "path": "reference/app/page.tsx",
+      "gitBlobSha": "168bf8b29ea9775571ec1ced8ed49b0d5387399d",
+      "bytes": 763
+    },
+    {
+      "source": "components/animation-editor/core/intent-mapper.test.ts",
+      "path": "reference/animation-editor/core/intent-mapper.test.ts",
+      "gitBlobSha": "e3612cc2db738d1c6c28a4443dc2a8f80490f5a3",
+      "bytes": 2016
+    },
+    {
+      "source": "components/animation-editor/core/intent-mapper.ts",
+      "path": "reference/animation-editor/core/intent-mapper.ts",
+      "gitBlobSha": "f2eae3b98a46dede07c096f2d05c12c2c0b9a6d3",
+      "bytes": 7050
+    },
+    {
+      "source": "components/animation-editor/core/intents.ts",
+      "path": "reference/animation-editor/core/intents.ts",
+      "gitBlobSha": "85d3c9efb1f8ef825839d619e48761821dc6ce64",
+      "bytes": 10310
+    },
+    {
+      "source": "components/animation-editor/core/page-transitions.test.ts",
+      "path": "reference/animation-editor/core/page-transitions.test.ts",
+      "gitBlobSha": "effca82810700cee23b2f387c090cf39b3cb268c",
+      "bytes": 1086
+    },
+    {
+      "source": "components/animation-editor/core/page-transitions.ts",
+      "path": "reference/animation-editor/core/page-transitions.ts",
+      "gitBlobSha": "bc5a5e938194cd9f35f343528e1016c54dfff87d",
+      "bytes": 3082
+    },
+    {
+      "source": "components/animation-editor/core/preview-state.test.ts",
+      "path": "reference/animation-editor/core/preview-state.test.ts",
+      "gitBlobSha": "a3be572b40ddf23c8e19e2db1f976faebd10f4b4",
+      "bytes": 514
+    },
+    {
+      "source": "components/animation-editor/core/preview-state.ts",
+      "path": "reference/animation-editor/core/preview-state.ts",
+      "gitBlobSha": "e27ea3c90f2889c8392e5c511fc17c28b3d4a7b5",
+      "bytes": 1103
+    },
+    {
+      "source": "components/animation-editor/core/scope.test.ts",
+      "path": "reference/animation-editor/core/scope.test.ts",
+      "gitBlobSha": "694e7ef5b24f3bd7984a1231ba7dc6647778bded",
+      "bytes": 637
+    },
+    {
+      "source": "components/animation-editor/core/scope.ts",
+      "path": "reference/animation-editor/core/scope.ts",
+      "gitBlobSha": "d3227fe023931e3089d9b8242c6974582579840a",
+      "bytes": 2137
+    },
+    {
+      "source": "components/animation-editor/core/types.test.ts",
+      "path": "reference/animation-editor/core/types.test.ts",
+      "gitBlobSha": "a0f44bde94ccdfa8f76483675355dfbadceec1e4",
+      "bytes": 1170
+    },
+    {
+      "source": "components/animation-editor/core/types.ts",
+      "path": "reference/animation-editor/core/types.ts",
+      "gitBlobSha": "a0d4da0b3d6b1f3a7bac8f714bf44b1d62f47991",
+      "bytes": 6511
+    },
+    {
+      "source": "components/animation-editor/core/undo.test.ts",
+      "path": "reference/animation-editor/core/undo.test.ts",
+      "gitBlobSha": "89c9d20e5705848a90a7ef84a1afc7d84a0e30f3",
+      "bytes": 481
+    },
+    {
+      "source": "components/animation-editor/core/undo.ts",
+      "path": "reference/animation-editor/core/undo.ts",
+      "gitBlobSha": "9c12dd43b291727e0ef02df858393dc863c493c5",
+      "bytes": 747
+    },
+    {
+      "source": "components/animation-editor/index.ts",
+      "path": "reference/animation-editor/index.ts",
+      "gitBlobSha": "3465fa6e58d46804abf9c74c9c2f50cca7d0c450",
+      "bytes": 817
+    },
+    {
+      "source": "components/animation-editor/portability.test.ts",
+      "path": "reference/animation-editor/portability.test.ts",
+      "gitBlobSha": "f63f5e17d4b8ae183aaf5ab8d05ba122a9806c83",
+      "bytes": 1593
+    },
+    {
+      "source": "components/animation-editor/README.md",
+      "path": "reference/animation-editor/README.md",
+      "gitBlobSha": "526957436de6ce98a9b7812eee2efb8cffaf2313",
+      "bytes": 4169
+    },
+    {
+      "source": "components/animation-editor/runtime/accessibilityWiring.test.ts",
+      "path": "reference/animation-editor/runtime/accessibilityWiring.test.ts",
+      "gitBlobSha": "c73cf4f39705843d885a26de20496b5136ece84e",
+      "bytes": 1187
+    },
+    {
+      "source": "components/animation-editor/runtime/active-popover.test.ts",
+      "path": "reference/animation-editor/runtime/active-popover.test.ts",
+      "gitBlobSha": "a2b6a8297f9d062e8fd743240c91b536762ccc32",
+      "bytes": 707
+    },
+    {
+      "source": "components/animation-editor/runtime/active-popover.ts",
+      "path": "reference/animation-editor/runtime/active-popover.ts",
+      "gitBlobSha": "d568c166f24ebd3e9ee16053c476fb6799853eb0",
+      "bytes": 649
+    },
+    {
+      "source": "components/animation-editor/runtime/AnimationEditorProvider.test.tsx",
+      "path": "reference/animation-editor/runtime/AnimationEditorProvider.test.tsx",
+      "gitBlobSha": "31e1856dae9c6963a75d24a13211f5a3629ead9c",
+      "bytes": 427
+    },
+    {
+      "source": "components/animation-editor/runtime/AnimationEditorProvider.tsx",
+      "path": "reference/animation-editor/runtime/AnimationEditorProvider.tsx",
+      "gitBlobSha": "26182ded50a5bc73ddc6386513220e3a8db40871",
+      "bytes": 2881
+    },
+    {
+      "source": "components/animation-editor/runtime/AnimationTargetOverlay.tsx",
+      "path": "reference/animation-editor/runtime/AnimationTargetOverlay.tsx",
+      "gitBlobSha": "8d975418adee49b0cbbab70561042d5855b4d2eb",
+      "bytes": 7693
+    },
+    {
+      "source": "components/animation-editor/runtime/page-transition-preview.test.ts",
+      "path": "reference/animation-editor/runtime/page-transition-preview.test.ts",
+      "gitBlobSha": "8e91179df88d4dd6c335dda3ed2014a76675756c",
+      "bytes": 1090
+    },
+    {
+      "source": "components/animation-editor/runtime/page-transition-preview.ts",
+      "path": "reference/animation-editor/runtime/page-transition-preview.ts",
+      "gitBlobSha": "d48d337494413faaa92cda0b281ddc8c33c9e2ff",
+      "bytes": 4470
+    },
+    {
+      "source": "components/animation-editor/runtime/popover-position.test.ts",
+      "path": "reference/animation-editor/runtime/popover-position.test.ts",
+      "gitBlobSha": "9335831a8897140d71a2866d47f500eed6b9f9fa",
+      "bytes": 862
+    },
+    {
+      "source": "components/animation-editor/runtime/popover-position.ts",
+      "path": "reference/animation-editor/runtime/popover-position.ts",
+      "gitBlobSha": "79996a69d916bdfab5d37afeacffdd5606391aac",
+      "bytes": 957
+    },
+    {
+      "source": "components/animation-editor/runtime/usePopoverFocus.ts",
+      "path": "reference/animation-editor/runtime/usePopoverFocus.ts",
+      "gitBlobSha": "4568d52632cb843dfd93edb3ec3a56e38cabd2b9",
+      "bytes": 1689
+    },
+    {
+      "source": "components/animation-editor/styles/animation-editor-dark.css",
+      "path": "reference/animation-editor/styles/animation-editor-dark.css",
+      "gitBlobSha": "a87da3ab3c91f09e7ddf3b8e43e9b388ee1577f6",
+      "bytes": 891
+    },
+    {
+      "source": "components/animation-editor/styles/animation-editor.css",
+      "path": "reference/animation-editor/styles/animation-editor.css",
+      "gitBlobSha": "e6fc4e0f4b9bc6d7925cbcfd7a1e02ad6b0e3bb9",
+      "bytes": 6376
+    },
+    {
+      "source": "components/animation-editor/ui/AnimationDraftStatus.tsx",
+      "path": "reference/animation-editor/ui/AnimationDraftStatus.tsx",
+      "gitBlobSha": "3041c3137892ab1374505ca9416007142a135599",
+      "bytes": 968
+    },
+    {
+      "source": "components/animation-editor/ui/AnimationFineTune.tsx",
+      "path": "reference/animation-editor/ui/AnimationFineTune.tsx",
+      "gitBlobSha": "01c9962e4bf1e02a5b3a9ab6b35837624d1f55d6",
+      "bytes": 2793
+    },
+    {
+      "source": "components/animation-editor/ui/AnimationIntentCard.tsx",
+      "path": "reference/animation-editor/ui/AnimationIntentCard.tsx",
+      "gitBlobSha": "13c058f2707e4c824acd38a4071aa0264d102c44",
+      "bytes": 1168
+    },
+    {
+      "source": "components/animation-editor/ui/AnimationIntentGallery.tsx",
+      "path": "reference/animation-editor/ui/AnimationIntentGallery.tsx",
+      "gitBlobSha": "19d808b1f445364670fba1fe7a428175a8f90de8",
+      "bytes": 1859
+    },
+    {
+      "source": "components/animation-editor/ui/AnimationPopover.tsx",
+      "path": "reference/animation-editor/ui/AnimationPopover.tsx",
+      "gitBlobSha": "9348064a532f8dcf520a855ac0b2707eef62dd82",
+      "bytes": 9720
+    },
+    {
+      "source": "components/animation-editor/ui/AnimationScopePicker.tsx",
+      "path": "reference/animation-editor/ui/AnimationScopePicker.tsx",
+      "gitBlobSha": "c505eb6ff034e551ea57235c5c0075b7adbb0168",
+      "bytes": 3302
+    },
+    {
+      "source": "components/animation-editor/ui/AnimationSimpleControls.tsx",
+      "path": "reference/animation-editor/ui/AnimationSimpleControls.tsx",
+      "gitBlobSha": "e74aa5fe0192a8388e440e3a7e6d1b13a3cf0b2a",
+      "bytes": 3733
+    },
+    {
+      "source": "components/animation-editor/ui/PageTransitionEditor.tsx",
+      "path": "reference/animation-editor/ui/PageTransitionEditor.tsx",
+      "gitBlobSha": "47fc1f12c1dc31439d1323a34cc72fa5cd75a130",
+      "bytes": 5852
+    },
+    {
+      "source": "components/animations/AnimatedElement.tsx",
+      "path": "reference/animations/AnimatedElement.tsx",
+      "gitBlobSha": "45c1ba0bf18f8337a9cb9df3d3344bb5366da9ce",
+      "bytes": 2183
+    },
+    {
+      "source": "components/animations/AnimatedPage.tsx",
+      "path": "reference/animations/AnimatedPage.tsx",
+      "gitBlobSha": "4dc58d55b1384a0ea3c4c21bea874fb23ed7f374",
+      "bytes": 1870
+    },
+    {
+      "source": "components/animations/AnimatedSection.tsx",
+      "path": "reference/animations/AnimatedSection.tsx",
+      "gitBlobSha": "b1a50d84cdcd4f0d9d14666516bf472362b9bd76",
+      "bytes": 1599
+    },
+    {
+      "source": "components/animations/animationEditorPresetCoverage.test.ts",
+      "path": "reference/animations/animationEditorPresetCoverage.test.ts",
+      "gitBlobSha": "0fb03a6fe383b7e38c0939cf224ffb33d33fb8ee",
+      "bytes": 978
+    },
+    {
+      "source": "components/animations/AnimationProvider.tsx",
+      "path": "reference/animations/AnimationProvider.tsx",
+      "gitBlobSha": "ed0cb5e74b9da6fd82926b94b1998cedabfbeea9",
+      "bytes": 4612
+    },
+    {
+      "source": "components/animations/EditableAnimationTarget.tsx",
+      "path": "reference/animations/EditableAnimationTarget.tsx",
+      "gitBlobSha": "a1de809c518a9af693fd1fa4bc97a3176cefb66a",
+      "bytes": 645
+    },
+    {
+      "source": "components/animations/onCanvasTargetWiring.test.ts",
+      "path": "reference/animations/onCanvasTargetWiring.test.ts",
+      "gitBlobSha": "e0156672dcf11d41cc5ea472295f5204e5452ced",
+      "bytes": 1398
+    },
+    {
+      "source": "components/animations/pageTargetWiring.test.ts",
+      "path": "reference/animations/pageTargetWiring.test.ts",
+      "gitBlobSha": "712e1f49996bf19d393cd791302412153f94ad9c",
+      "bytes": 1292
+    },
+    {
+      "source": "components/animations/PageTransitionBoundary.test.ts",
+      "path": "reference/animations/PageTransitionBoundary.test.ts",
+      "gitBlobSha": "6c08fe6119c4419ed14264b805f23b09b91a5d28",
+      "bytes": 1049
+    },
+    {
+      "source": "components/animations/PageTransitionBoundary.tsx",
+      "path": "reference/animations/PageTransitionBoundary.tsx",
+      "gitBlobSha": "f4cd618aaa4e68b5a6a3482301013a60daaebcad",
+      "bytes": 8227
+    },
+    {
+      "source": "components/animations/presets.test.ts",
+      "path": "reference/animations/presets.test.ts",
+      "gitBlobSha": "13d4abfe55bc76a240e45943f9d6d6bc2900ecf8",
+      "bytes": 1462
+    },
+    {
+      "source": "components/animations/presets.ts",
+      "path": "reference/animations/presets.ts",
+      "gitBlobSha": "71170ac934081bf552c0f4bb0fa57595548c8bc3",
+      "bytes": 6086
+    },
+    {
+      "source": "components/animations/resolveAnimationConfig.test.ts",
+      "path": "reference/animations/resolveAnimationConfig.test.ts",
+      "gitBlobSha": "456b27d5d3cfe8a2cd4421308425a6d0e999a79d",
+      "bytes": 2477
+    },
+    {
+      "source": "components/animations/resolveAnimationConfig.ts",
+      "path": "reference/animations/resolveAnimationConfig.ts",
+      "gitBlobSha": "c330f4b7542022429481dfb50ac7ffb91332f838",
+      "bytes": 4285
+    },
+    {
+      "source": "components/animations/targetRegistry.element.test.ts",
+      "path": "reference/animations/targetRegistry.element.test.ts",
+      "gitBlobSha": "598a6badad82e9908ef4c04ef108cb660dd11bda",
+      "bytes": 642
+    },
+    {
+      "source": "components/animations/targetRegistry.ts",
+      "path": "reference/animations/targetRegistry.ts",
+      "gitBlobSha": "b82451042f9a467f332119b57a893c63fb420e67",
+      "bytes": 1777
+    },
+    {
+      "source": "components/animations/types.ts",
+      "path": "reference/animations/types.ts",
+      "gitBlobSha": "354eb4ca949bb79858122eeb82dc71cea35559d3",
+      "bytes": 5651
+    },
+    {
+      "source": "components/animations/useAnimationRuntime.ts",
+      "path": "reference/animations/useAnimationRuntime.ts",
+      "gitBlobSha": "ea135267e6f5d0b4055d38c07f8bcf83552b2a98",
+      "bytes": 8751
+    },
+    {
+      "source": "components/blog/AddPostControl.tsx",
+      "path": "reference/widget-examples/blog/AddPostControl.tsx",
+      "gitBlobSha": "00d2099905f15d1b4fea2fbd7bbb2d0e57438c52",
+      "bytes": 3020
+    },
+    {
+      "source": "components/blog/blocks/BlogBlock.tsx",
+      "path": "reference/widget-examples/blog/blocks/BlogBlock.tsx",
+      "gitBlobSha": "d25ac1b0188922b381486a4a99d01157a21c2827",
+      "bytes": 4214
+    },
+    {
+      "source": "components/blog/BlogBody.tsx",
+      "path": "reference/widget-examples/blog/BlogBody.tsx",
+      "gitBlobSha": "c6d947ea8b95aca54859b6f924a0ecfb44e41dc6",
+      "bytes": 2910
+    },
+    {
+      "source": "components/blog/BlogCard.tsx",
+      "path": "reference/widget-examples/blog/BlogCard.tsx",
+      "gitBlobSha": "3bbd7335996fecc473b1107f0a07e14eab6dae40",
+      "bytes": 2477
+    },
+    {
+      "source": "components/blog/blogCategoriesCms.test.ts",
+      "path": "reference/widget-examples/blog/blogCategoriesCms.test.ts",
+      "gitBlobSha": "76d50efc7e4f7f18b970c7d11dc90ac3a35b9b1c",
+      "bytes": 2457
+    },
+    {
+      "source": "components/blog/blogFilters.test.ts",
+      "path": "reference/widget-examples/blog/blogFilters.test.ts",
+      "gitBlobSha": "bd7b17ae22b8dd5a26c2ceb9ae2d2f9e7ca3f7a5",
+      "bytes": 4980
+    },
+    {
+      "source": "components/blog/blogFilters.ts",
+      "path": "reference/widget-examples/blog/blogFilters.ts",
+      "gitBlobSha": "ce7a609c748b45ec902acd864592fe41dd187bed",
+      "bytes": 2041
+    },
+    {
+      "source": "components/blog/BlogFilters.tsx",
+      "path": "reference/widget-examples/blog/BlogFilters.tsx",
+      "gitBlobSha": "62ca2f79f3ba6e08e4d45e545686f59edcd96a1b",
+      "bytes": 6156
+    },
+    {
+      "source": "components/blog/blogModel.test.ts",
+      "path": "reference/widget-examples/blog/blogModel.test.ts",
+      "gitBlobSha": "6b06014df6b314abfc39c41c34fa95ea7ed64632",
+      "bytes": 3800
+    },
+    {
+      "source": "components/blog/blogModel.ts",
+      "path": "reference/widget-examples/blog/blogModel.ts",
+      "gitBlobSha": "b333b853b4b364311fa3371dc3f4c025c8c2e6ea",
+      "bytes": 3703
+    },
+    {
+      "source": "components/blog/BlogPagination.tsx",
+      "path": "reference/widget-examples/blog/BlogPagination.tsx",
+      "gitBlobSha": "531797b38b30a99df5e9fbed9a820e6180c2f7c3",
+      "bytes": 1709
+    },
+    {
+      "source": "components/blog/BlogSidebar.tsx",
+      "path": "reference/widget-examples/blog/BlogSidebar.tsx",
+      "gitBlobSha": "3dab20507d44b13d5751ea751705bdba5acc4c18",
+      "bytes": 2774
+    },
+    {
+      "source": "components/blog/blogSlug.test.ts",
+      "path": "reference/widget-examples/blog/blogSlug.test.ts",
+      "gitBlobSha": "333e43ccce3c0c041f92038b5933c9321ffd4dea",
+      "bytes": 1723
+    },
+    {
+      "source": "components/blog/blogSlug.ts",
+      "path": "reference/widget-examples/blog/blogSlug.ts",
+      "gitBlobSha": "6c037c6716de17b29cc5100728e447d6a53967ad",
+      "bytes": 901
+    },
+    {
+      "source": "components/blog/PostStatusControl.tsx",
+      "path": "reference/widget-examples/blog/PostStatusControl.tsx",
+      "gitBlobSha": "93cd331276f4d323bf5c3bf9e8b60d2c44b52240",
+      "bytes": 1219
+    },
+    {
+      "source": "components/blog/readingTime.test.ts",
+      "path": "reference/widget-examples/blog/readingTime.test.ts",
+      "gitBlobSha": "974ee07debca9dda404ff3abefc90af28e807335",
+      "bytes": 1095
+    },
+    {
+      "source": "components/blog/readingTime.ts",
+      "path": "reference/widget-examples/blog/readingTime.ts",
+      "gitBlobSha": "a7b84c60f6e78b946eb75e4e9bc10c29b9915d62",
+      "bytes": 891
+    },
+    {
+      "source": "components/cms/activePopover.ts",
+      "path": "reference/cms/activePopover.ts",
+      "gitBlobSha": "1ee0ea9537c8c5620109d89e50ef60c2fa77ed5a",
+      "bytes": 170
+    },
+    {
+      "source": "components/cms/AdvancedEditorPanel.tsx",
+      "path": "reference/cms/AdvancedEditorPanel.tsx",
+      "gitBlobSha": "73b0f0f48cde582acf6ccb9605692ab81ffa6d60",
+      "bytes": 2813
+    },
+    {
+      "source": "components/cms/animation/pageTransitionEditorWiring.test.ts",
+      "path": "reference/cms/animation/pageTransitionEditorWiring.test.ts",
+      "gitBlobSha": "553676b747528e9a030c6900716d8ebf6d6242a8",
+      "bytes": 1413
+    },
+    {
+      "source": "components/cms/animation/publishedDraftMode.test.ts",
+      "path": "reference/cms/animation/publishedDraftMode.test.ts",
+      "gitBlobSha": "7e416135df4500ec6af2bd7bc7b2a4be868bf4a2",
+      "bytes": 886
+    },
+    {
+      "source": "components/cms/animation/scopePaths.ts",
+      "path": "reference/cms/animation/scopePaths.ts",
+      "gitBlobSha": "ce6e3f364100725de92f3ad9d7744cf19161e18e",
+      "bytes": 1302
+    },
+    {
+      "source": "components/cms/animation/SmtsAnimationEditorAdapter.test.ts",
+      "path": "reference/cms/animation/SmtsAnimationEditorAdapter.test.ts",
+      "gitBlobSha": "e56fed4f15147a9061833bdb8af29beb33b3fc47",
+      "bytes": 1584
+    },
+    {
+      "source": "components/cms/animation/SmtsAnimationEditorAdapter.ts",
+      "path": "reference/cms/animation/SmtsAnimationEditorAdapter.ts",
+      "gitBlobSha": "d8e46db7de5c2717a2d3d7d39842762e14ee999c",
+      "bytes": 9418
+    },
+    {
+      "source": "components/cms/animation/SmtsAnimationEditorProvider.tsx",
+      "path": "reference/cms/animation/SmtsAnimationEditorProvider.tsx",
+      "gitBlobSha": "1cedbc15485a622f48afc88b3b9b45f7e92d5764",
+      "bytes": 1081
+    },
+    {
+      "source": "components/cms/animationApply.test.ts",
+      "path": "reference/cms/animationApply.test.ts",
+      "gitBlobSha": "393ff10b9090de1b083c95046f638ce20f29385d",
+      "bytes": 1540
+    },
+    {
+      "source": "components/cms/animationApply.ts",
+      "path": "reference/cms/animationApply.ts",
+      "gitBlobSha": "854053216c4c115cc90556e99d4c872d84020d08",
+      "bytes": 1090
+    },
+    {
+      "source": "components/cms/AssetField.tsx",
+      "path": "reference/cms/AssetField.tsx",
+      "gitBlobSha": "a54192913735c2bfba1f25825d871d88f62dfb68",
+      "bytes": 3188
+    },
+    {
+      "source": "components/cms/blogNormalization.test.ts",
+      "path": "reference/cms/blogNormalization.test.ts",
+      "gitBlobSha": "29b051159e6cea79b77fd220d3b14713d4f756aa",
+      "bytes": 3637
+    },
+    {
+      "source": "components/cms/careersNormalization.test.ts",
+      "path": "reference/cms/careersNormalization.test.ts",
+      "gitBlobSha": "74d073bdfbae43007c1ae7fc5ba3f47dcbba9abb",
+      "bytes": 2525
+    },
+    {
+      "source": "components/cms/careersValidation.test.ts",
+      "path": "reference/cms/careersValidation.test.ts",
+      "gitBlobSha": "60f8b22a8317e063b42b809465ed05e23399ac94",
+      "bytes": 3432
+    },
+    {
+      "source": "components/cms/ClickBlocker.tsx",
+      "path": "reference/cms/ClickBlocker.tsx",
+      "gitBlobSha": "7690892ad5e5006050fb3d91dff0e1bd67fc4974",
+      "bytes": 2460
+    },
+    {
+      "source": "components/cms/CmsHistoryCompareRestore.tsx",
+      "path": "reference/cms/CmsHistoryCompareRestore.tsx",
+      "gitBlobSha": "7128b5c11a8e890859d4e4452492a91455b7154c",
+      "bytes": 11112
+    },
+    {
+      "source": "components/cms/cmsHistoryDiff.test.ts",
+      "path": "reference/cms/cmsHistoryDiff.test.ts",
+      "gitBlobSha": "dccddca5c666bf4310e361348eaa58f9ebe589a9",
+      "bytes": 1687
+    },
+    {
+      "source": "components/cms/cmsHistoryDiff.ts",
+      "path": "reference/cms/cmsHistoryDiff.ts",
+      "gitBlobSha": "f93d05577353db2e5e444c007f88e804b2edd190",
+      "bytes": 2754
+    },
+    {
+      "source": "components/cms/cmsHistoryPreview.test.ts",
+      "path": "reference/cms/cmsHistoryPreview.test.ts",
+      "gitBlobSha": "9563a35174e2d94b79d227f5501686518c5764c2",
+      "bytes": 1182
+    },
+    {
+      "source": "components/cms/cmsHistoryPreview.ts",
+      "path": "reference/cms/cmsHistoryPreview.ts",
+      "gitBlobSha": "dd0e24c3e5a3161126be537fc6fb0543d7b5fef1",
+      "bytes": 2466
+    },
+    {
+      "source": "components/cms/cmsIssues.test.ts",
+      "path": "reference/cms/cmsIssues.test.ts",
+      "gitBlobSha": "43629d7654015193eff0798cd92b3934c01877df",
+      "bytes": 2185
+    },
+    {
+      "source": "components/cms/cmsIssues.ts",
+      "path": "reference/cms/cmsIssues.ts",
+      "gitBlobSha": "678caaa8d909c45e9fb7ec085099a5ae05098e57",
+      "bytes": 3253
+    },
+    {
+      "source": "components/cms/CmsRoot.tsx",
+      "path": "reference/cms/CmsRoot.tsx",
+      "gitBlobSha": "8c2b330978f10e842c869e2e18b6514a237fb397",
+      "bytes": 2004
+    },
+    {
+      "source": "components/cms/CmsTools.tsx",
+      "path": "reference/cms/CmsTools.tsx",
+      "gitBlobSha": "a70c76611cd4b3c0f022ddaaf113ba706f6c40b8",
+      "bytes": 591
+    },
+    {
+      "source": "components/cms/CmsVersionHistoryPanel.tsx",
+      "path": "reference/cms/CmsVersionHistoryPanel.tsx",
+      "gitBlobSha": "dce4270d20e6e4bc2646adab47594debaf73a4a1",
+      "bytes": 13993
+    },
+    {
+      "source": "components/cms/CmsVersionHistoryPanel.wiring.test.ts",
+      "path": "reference/cms/CmsVersionHistoryPanel.wiring.test.ts",
+      "gitBlobSha": "b540aadb14896fd20b49ec9dfd8cc4dddf002f76",
+      "bytes": 1700
+    },
+    {
+      "source": "components/cms/cmsViewMode.test.ts",
+      "path": "reference/cms/cmsViewMode.test.ts",
+      "gitBlobSha": "e967c7a1fe7ab1cfbd5881bc17a6e6c72ca67d48",
+      "bytes": 1531
+    },
+    {
+      "source": "components/cms/documentNormalization.test.ts",
+      "path": "reference/cms/documentNormalization.test.ts",
+      "gitBlobSha": "952d9c6979c6ffacceecca94f805345fee2ed0d7",
+      "bytes": 3025
+    },
+    {
+      "source": "components/cms/documentNormalization.ts",
+      "path": "reference/cms/documentNormalization.ts",
+      "gitBlobSha": "630635e3e87106b7c957c4ef3487434be24c6074",
+      "bytes": 23599
+    },
+    {
+      "source": "components/cms/documentValidation.test.ts",
+      "path": "reference/cms/documentValidation.test.ts",
+      "gitBlobSha": "1fc428eddeb945f89f9da498b97dfb949aa5610f",
+      "bytes": 17119
+    },
+    {
+      "source": "components/cms/documentValidation.ts",
+      "path": "reference/cms/documentValidation.ts",
+      "gitBlobSha": "00b6ddefd4e0d99dfce9f114f827ff7328606927",
+      "bytes": 29208
+    },
+    {
+      "source": "components/cms/DynamicFieldEditor.tsx",
+      "path": "reference/cms/DynamicFieldEditor.tsx",
+      "gitBlobSha": "17ad9c1bccc1a68d5901230498d52acc1a4d05b7",
+      "bytes": 22917
+    },
+    {
+      "source": "components/cms/editable.tsx",
+      "path": "reference/cms/editable.tsx",
+      "gitBlobSha": "f2e952774a4aab73395a4028a8f81475dbb69408",
+      "bytes": 18170
+    },
+    {
+      "source": "components/cms/EditableIcon.tsx",
+      "path": "reference/cms/EditableIcon.tsx",
+      "gitBlobSha": "8448a5bd4d34d519b199b26d156d93424eaf79f5",
+      "bytes": 1087
+    },
+    {
+      "source": "components/cms/editSession.test.ts",
+      "path": "reference/cms/editSession.test.ts",
+      "gitBlobSha": "f7969d6c1b056a508c2dd9c36386374be22dff63",
+      "bytes": 1587
+    },
+    {
+      "source": "components/cms/editSession.ts",
+      "path": "reference/cms/editSession.ts",
+      "gitBlobSha": "b22a9a0c2c7383798f4bc5beaaf151768c76e4e9",
+      "bytes": 694
+    },
+    {
+      "source": "components/cms/FieldDialog.tsx",
+      "path": "reference/cms/FieldDialog.tsx",
+      "gitBlobSha": "b672b8f8c2445eefa11de6c799fc7179b80f85cf",
+      "bytes": 4270
+    },
+    {
+      "source": "components/cms/GlobalEditToolbar.animationWiring.test.ts",
+      "path": "reference/cms/GlobalEditToolbar.animationWiring.test.ts",
+      "gitBlobSha": "f31f06280674a72cc9e582ad355218df56db5dee",
+      "bytes": 1239
+    },
+    {
+      "source": "components/cms/GlobalEditToolbar.tsx",
+      "path": "reference/cms/GlobalEditToolbar.tsx",
+      "gitBlobSha": "c0939ecef1ba2c8dccd35fe2d9c56303accca61c",
+      "bytes": 19995
+    },
+    {
+      "source": "components/cms/icons.ts",
+      "path": "reference/cms/icons.ts",
+      "gitBlobSha": "ff7e020c6898cae73098e303fcd0bf99d8a5d581",
+      "bytes": 3069
+    },
+    {
+      "source": "components/cms/IconSelector.tsx",
+      "path": "reference/cms/IconSelector.tsx",
+      "gitBlobSha": "b0f230c4c9e08a1b38bff48b2a2ab2a919052930",
+      "bytes": 14241
+    },
+    {
+      "source": "components/cms/iconValue.test.ts",
+      "path": "reference/cms/iconValue.test.ts",
+      "gitBlobSha": "d06a0a7e990ec76b0c032d35e4747eef71c8a657",
+      "bytes": 1062
+    },
+    {
+      "source": "components/cms/iconValue.ts",
+      "path": "reference/cms/iconValue.ts",
+      "gitBlobSha": "11a8104aab4df11a2c76b282d0f1ede1e056b8f1",
+      "bytes": 893
+    },
+    {
+      "source": "components/cms/InlineAddControl.tsx",
+      "path": "reference/cms/InlineAddControl.tsx",
+      "gitBlobSha": "4e69fecde10652943e80609d69ab8d218d3fdb58",
+      "bytes": 816
+    },
+    {
+      "source": "components/cms/InlineAddIcon.tsx",
+      "path": "reference/cms/InlineAddIcon.tsx",
+      "gitBlobSha": "83f66e2771409e36dfae32b4c6aa75e710d86951",
+      "bytes": 828
+    },
+    {
+      "source": "components/cms/InlineListControls.test.ts",
+      "path": "reference/cms/InlineListControls.test.ts",
+      "gitBlobSha": "99130709e06d60cb1234998266ba07c8df7d703b",
+      "bytes": 2432
+    },
+    {
+      "source": "components/cms/InlineListControls.tsx",
+      "path": "reference/cms/InlineListControls.tsx",
+      "gitBlobSha": "747398187ce82f3bfe1395f984bc16e0e5f78a69",
+      "bytes": 5371
+    },
+    {
+      "source": "components/cms/IssuesPanel.tsx",
+      "path": "reference/cms/IssuesPanel.tsx",
+      "gitBlobSha": "25ebc80d82ee574e9f600d9ef561348ca88a4edc",
+      "bytes": 7110
+    },
+    {
+      "source": "components/cms/json.ts",
+      "path": "reference/cms/json.ts",
+      "gitBlobSha": "1f2c109866bd1139ced7b2950ab33b8e28a8d359",
+      "bytes": 1609
+    },
+    {
+      "source": "components/cms/LinkField.tsx",
+      "path": "reference/cms/LinkField.tsx",
+      "gitBlobSha": "df03dfbc36600ba5110e8a0a159af3f112efd4da",
+      "bytes": 1600
+    },
+    {
+      "source": "components/cms/pageMediaWiring.test.ts",
+      "path": "reference/cms/pageMediaWiring.test.ts",
+      "gitBlobSha": "1d8e947ecd0d840371e5329d23e11a9d608c64f0",
+      "bytes": 4438
+    },
+    {
+      "source": "components/cms/ReadOnlyIcon.test.tsx",
+      "path": "reference/cms/ReadOnlyIcon.test.tsx",
+      "gitBlobSha": "1c026185e1767c2a519e9e7fe5beee88efb3a8a3",
+      "bytes": 587
+    },
+    {
+      "source": "components/cms/ReadOnlyIcon.tsx",
+      "path": "reference/cms/ReadOnlyIcon.tsx",
+      "gitBlobSha": "a621495f26458ffcd6c3e1d7319b4b39e15d2a65",
+      "bytes": 691
+    },
+    {
+      "source": "components/cms/relatedDocumentStore.test.ts",
+      "path": "reference/cms/relatedDocumentStore.test.ts",
+      "gitBlobSha": "f85f8d1b689736a5e7d08c077de68d11cbdb32b9",
+      "bytes": 985
+    },
+    {
+      "source": "components/cms/SectionEditor.tsx",
+      "path": "reference/cms/SectionEditor.tsx",
+      "gitBlobSha": "b67c5a5cc70ac394c4327426d478846a4ef13618",
+      "bytes": 1982
+    },
+    {
+      "source": "components/cms/servicesNormalization.test.ts",
+      "path": "reference/cms/servicesNormalization.test.ts",
+      "gitBlobSha": "6ef6cf04aae099752ad7bd36f0af81216aca39ba",
+      "bytes": 8874
+    },
+    {
+      "source": "components/cms/siteChromeWiring.test.ts",
+      "path": "reference/cms/siteChromeWiring.test.ts",
+      "gitBlobSha": "6bbc8541aeed071fec17f82677872f6ac2ce50d5",
+      "bytes": 2570
+    },
+    {
+      "source": "components/cms/SiteNavigationEditor.tsx",
+      "path": "reference/cms/SiteNavigationEditor.tsx",
+      "gitBlobSha": "4f2b4031de888a76ee98228ba617929383e77bb1",
+      "bytes": 4531
+    },
+    {
+      "source": "components/cms/store.ts",
+      "path": "reference/cms/store.ts",
+      "gitBlobSha": "b34c04b78b2e350e94030a652140f7e2e8d13663",
+      "bytes": 27147
+    },
+    {
+      "source": "components/cms/storeAuthLoad.test.ts",
+      "path": "reference/cms/storeAuthLoad.test.ts",
+      "gitBlobSha": "6c15a0a2cf85ce81b6d08a6fded5d1bc6a904c82",
+      "bytes": 1211
+    },
+    {
+      "source": "components/cms/storeDocScope.test.ts",
+      "path": "reference/cms/storeDocScope.test.ts",
+      "gitBlobSha": "15340fe66dcbfb654f68db93ef5a3caf3f4801f3",
+      "bytes": 4645
+    },
+    {
+      "source": "components/cms/storeRevision.test.ts",
+      "path": "reference/cms/storeRevision.test.ts",
+      "gitBlobSha": "de63c1f99b5797e66e018cdfdf33cdb7827bd1a6",
+      "bytes": 4790
+    },
+    {
+      "source": "components/cms/ThemeEditorPanel.tsx",
+      "path": "reference/cms/ThemeEditorPanel.tsx",
+      "gitBlobSha": "83fc23fd83563bbc2964062eeba3438ca422f86d",
+      "bytes": 13643
+    },
+    {
+      "source": "components/cms/themeValidation.test.ts",
+      "path": "reference/cms/themeValidation.test.ts",
+      "gitBlobSha": "da25630c1d6410597d2cc799e3fb70033c2e8553",
+      "bytes": 1916
+    },
+    {
+      "source": "components/cms/updatesNormalization.test.ts",
+      "path": "reference/cms/updatesNormalization.test.ts",
+      "gitBlobSha": "792a10968d3bcc2e8d9d4b2f918b90ac938040a2",
+      "bytes": 4399
+    },
+    {
+      "source": "components/cms/uploadAsset.test.ts",
+      "path": "reference/cms/uploadAsset.test.ts",
+      "gitBlobSha": "ad97df6bcee3077aeb67cb072948ee591f715a9b",
+      "bytes": 913
+    },
+    {
+      "source": "components/cms/uploadAsset.ts",
+      "path": "reference/cms/uploadAsset.ts",
+      "gitBlobSha": "0cf7de05a47313734b8be412eda5bd8be151cd6e",
+      "bytes": 449
+    },
+    {
+      "source": "components/footer/footer-inline-cms.css",
+      "path": "reference/widget-examples/footer/footer-inline-cms.css",
+      "gitBlobSha": "c770c6932f2476e0f027c604d485be40db67ca98",
+      "bytes": 7931
+    },
+    {
+      "source": "components/footer/FooterInlineCms.module.css",
+      "path": "reference/widget-examples/footer/FooterInlineCms.module.css",
+      "gitBlobSha": "060260c12cf48a14c851f04d82547f70f917c0c9",
+      "bytes": 7565
+    },
+    {
+      "source": "components/footer/footerInlineCmsStyles.test.ts",
+      "path": "reference/widget-examples/footer/footerInlineCmsStyles.test.ts",
+      "gitBlobSha": "d19e0d023f3d1a52e64af26a4abaf7491772b637",
+      "bytes": 1236
+    },
+    {
+      "source": "components/footer/FooterServicePicker.test.ts",
+      "path": "reference/widget-examples/footer/FooterServicePicker.test.ts",
+      "gitBlobSha": "00966e21863e5aea2d47a4d256c89c88db453b2e",
+      "bytes": 1961
+    },
+    {
+      "source": "components/footer/FooterServicePicker.tsx",
+      "path": "reference/widget-examples/footer/FooterServicePicker.tsx",
+      "gitBlobSha": "5b85e184b34444696b492b3d08d008c2c44348e0",
+      "bytes": 7615
+    },
+    {
+      "source": "components/footer/FooterSocialLinksEditor.test.ts",
+      "path": "reference/widget-examples/footer/FooterSocialLinksEditor.test.ts",
+      "gitBlobSha": "655476bf1faa19bdf26b946a83922c2bd54fd7cb",
+      "bytes": 1776
+    },
+    {
+      "source": "components/footer/FooterSocialLinksEditor.tsx",
+      "path": "reference/widget-examples/footer/FooterSocialLinksEditor.tsx",
+      "gitBlobSha": "5242843f3bdba804608077e45fd6f614718f5c98",
+      "bytes": 8265
+    },
+    {
+      "source": "components/footer/socialLinks.test.ts",
+      "path": "reference/widget-examples/footer/socialLinks.test.ts",
+      "gitBlobSha": "a4269f6738693532673dabdc03b887973e88bda2",
+      "bytes": 3215
+    },
+    {
+      "source": "components/footer/socialLinks.ts",
+      "path": "reference/widget-examples/footer/socialLinks.ts",
+      "gitBlobSha": "57ad420f13a93157118d33333a55f280c54c443b",
+      "bytes": 4663
+    },
+    {
+      "source": "components/footer/SocialPlatformIcon.test.tsx",
+      "path": "reference/widget-examples/footer/SocialPlatformIcon.test.tsx",
+      "gitBlobSha": "48065b6242e714f216be68a08679e9e027ede53e",
+      "bytes": 795
+    },
+    {
+      "source": "components/footer/SocialPlatformIcon.tsx",
+      "path": "reference/widget-examples/footer/SocialPlatformIcon.tsx",
+      "gitBlobSha": "ff57eb118bc16a3e8052ff8b1ba4cce57799e3d0",
+      "bytes": 2038
+    },
+    {
+      "source": "components/pages/AboutPage.tsx",
+      "path": "reference/pages/AboutPage.tsx",
+      "gitBlobSha": "bb67f916687b16b0ad071554761cb03039dcc6f2",
+      "bytes": 12362
+    },
+    {
+      "source": "components/pages/BlogPostPage.tsx",
+      "path": "reference/pages/BlogPostPage.tsx",
+      "gitBlobSha": "642f6fc3f2a23f97100f2f86accc2c478ea0ea93",
+      "bytes": 6986
+    },
+    {
+      "source": "components/pages/BlogsPage.tsx",
+      "path": "reference/pages/BlogsPage.tsx",
+      "gitBlobSha": "3174af575291bb1da14ee74f110f92e461dc1868",
+      "bytes": 8603
+    },
+    {
+      "source": "components/pages/blogWiring.test.ts",
+      "path": "reference/pages/blogWiring.test.ts",
+      "gitBlobSha": "5b20150cc3dff356820492a81c44233b6399bef3",
+      "bytes": 6237
+    },
+    {
+      "source": "components/pages/CareersPage.tsx",
+      "path": "reference/pages/CareersPage.tsx",
+      "gitBlobSha": "cd429e7b519465435e031d1e3e009dbf1dd1c755",
+      "bytes": 14691
+    },
+    {
+      "source": "components/pages/CertificationsPage.tsx",
+      "path": "reference/pages/CertificationsPage.tsx",
+      "gitBlobSha": "df8846d4961afde97847a7640f5f76f3778ad8a4",
+      "bytes": 20341
+    },
+    {
+      "source": "components/pages/ContactPage.tsx",
+      "path": "reference/pages/ContactPage.tsx",
+      "gitBlobSha": "24bceeb850db70b9dcad9f11af2fdd111309758f",
+      "bytes": 14976
+    },
+    {
+      "source": "components/pages/HomePage.tsx",
+      "path": "reference/pages/HomePage.tsx",
+      "gitBlobSha": "84ebccba2fc004f83da8b08fd1aa37b02df12195",
+      "bytes": 12099
+    },
+    {
+      "source": "components/pages/ProjectDetailPage.tsx",
+      "path": "reference/pages/ProjectDetailPage.tsx",
+      "gitBlobSha": "2ab812809fbb5b9a95b1aa3864769de3d0ba1048",
+      "bytes": 18862
+    },
+    {
+      "source": "components/pages/ProjectsPage.tsx",
+      "path": "reference/pages/ProjectsPage.tsx",
+      "gitBlobSha": "b57a647a4dd52d4bf1862e2e3a38f615f67f7dc4",
+      "bytes": 18146
+    },
+    {
+      "source": "components/pages/ServiceDetailPage.tsx",
+      "path": "reference/pages/ServiceDetailPage.tsx",
+      "gitBlobSha": "fdfe82bed382b7625e3a6e453c97e84755dd46c8",
+      "bytes": 5860
+    },
+    {
+      "source": "components/pages/serviceDetailWiring.test.ts",
+      "path": "reference/pages/serviceDetailWiring.test.ts",
+      "gitBlobSha": "e8f033783ae567e61be1e54f19a3b3df46823cff",
+      "bytes": 2462
+    },
+    {
+      "source": "components/pages/ServicesPage.tsx",
+      "path": "reference/pages/ServicesPage.tsx",
+      "gitBlobSha": "6291a19fde47da45dcbb3611b57d2e67bcbdcf9c",
+      "bytes": 17123
+    },
+    {
+      "source": "components/pages/UpdatesPage.tsx",
+      "path": "reference/pages/UpdatesPage.tsx",
+      "gitBlobSha": "897a6a7714bf16414574cf9e2d3b5a17c035a240",
+      "bytes": 11109
+    },
+    {
+      "source": "components/projects/AddProjectControl.tsx",
+      "path": "reference/widget-examples/projects/AddProjectControl.tsx",
+      "gitBlobSha": "8de1520d3665b6c032d144533aafa3a67e3dcdad",
+      "bytes": 3417
+    },
+    {
+      "source": "components/projects/FeaturedProject.tsx",
+      "path": "reference/widget-examples/projects/FeaturedProject.tsx",
+      "gitBlobSha": "cae6daee200a6b95192f80be1386c9c2a7011270",
+      "bytes": 7747
+    },
+    {
+      "source": "components/projects/ProjectCard.tsx",
+      "path": "reference/widget-examples/projects/ProjectCard.tsx",
+      "gitBlobSha": "c9e0f72e20cd7fb808578cf528d3a7d69cf24b74",
+      "bytes": 10993
+    },
+    {
+      "source": "components/projects/projectCms.test.ts",
+      "path": "reference/widget-examples/projects/projectCms.test.ts",
+      "gitBlobSha": "ac50de13f67e73eba29a407a3f6cdfa147ae6deb",
+      "bytes": 13145
+    },
+    {
+      "source": "components/projects/ProjectCta.tsx",
+      "path": "reference/widget-examples/projects/ProjectCta.tsx",
+      "gitBlobSha": "0ab945a82855979e2ed33959579296b4ebfc6c35",
+      "bytes": 4424
+    },
+    {
+      "source": "components/projects/projectDetail.test.ts",
+      "path": "reference/widget-examples/projects/projectDetail.test.ts",
+      "gitBlobSha": "591a8b22d77d0f106539094ea5a44275a55be8ab",
+      "bytes": 11352
+    },
+    {
+      "source": "components/projects/projectDetail.ts",
+      "path": "reference/widget-examples/projects/projectDetail.ts",
+      "gitBlobSha": "f55aa8fefd4e4682196a1909686502dcb911cc97",
+      "bytes": 6349
+    },
+    {
+      "source": "components/projects/ProjectFacts.tsx",
+      "path": "reference/widget-examples/projects/ProjectFacts.tsx",
+      "gitBlobSha": "17a9f39e4796bf6034bfb9e99f778bc7ddc5291b",
+      "bytes": 4923
+    },
+    {
+      "source": "components/projects/ProjectFilters.tsx",
+      "path": "reference/widget-examples/projects/ProjectFilters.tsx",
+      "gitBlobSha": "68caa264111300bf6c8e936d07e695d9cd5fa20e",
+      "bytes": 6240
+    },
+    {
+      "source": "components/projects/ProjectGallery.tsx",
+      "path": "reference/widget-examples/projects/ProjectGallery.tsx",
+      "gitBlobSha": "9bbd042bbd0f4748d524b653824fedb148ce221f",
+      "bytes": 9957
+    },
+    {
+      "source": "components/projects/projectModel.test.ts",
+      "path": "reference/widget-examples/projects/projectModel.test.ts",
+      "gitBlobSha": "6be8c8adf3550b5e782c0194dc05d9e90591eb1d",
+      "bytes": 9476
+    },
+    {
+      "source": "components/projects/projectModel.ts",
+      "path": "reference/widget-examples/projects/projectModel.ts",
+      "gitBlobSha": "0314dd9366b4e7ea75148ca4a785a2b15372cd30",
+      "bytes": 8748
+    },
+    {
+      "source": "components/projects/projectSlug.test.ts",
+      "path": "reference/widget-examples/projects/projectSlug.test.ts",
+      "gitBlobSha": "cedda7adcd5b394903504c9fe827f7ce3243f50c",
+      "bytes": 1483
+    },
+    {
+      "source": "components/projects/projectSlug.ts",
+      "path": "reference/widget-examples/projects/projectSlug.ts",
+      "gitBlobSha": "1b821443b021f47c73fc7794f77d1095fe181b2d",
+      "bytes": 943
+    },
+    {
+      "source": "components/projects/projectsPage.test.ts",
+      "path": "reference/widget-examples/projects/projectsPage.test.ts",
+      "gitBlobSha": "d14491cb6a28ed581cd27c353666f410974bd9c7",
+      "bytes": 12468
+    },
+    {
+      "source": "components/projects/ProjectStats.tsx",
+      "path": "reference/widget-examples/projects/ProjectStats.tsx",
+      "gitBlobSha": "d608958ae4743f16792dd64e74bf0bc5d80355a6",
+      "bytes": 6144
+    },
+    {
+      "source": "components/projects/ProjectStatusControl.tsx",
+      "path": "reference/widget-examples/projects/ProjectStatusControl.tsx",
+      "gitBlobSha": "5af1dc6cb63e7d60ce9f151e04eb05b3e1e95931",
+      "bytes": 1296
+    },
+    {
+      "source": "components/theme-provider.tsx",
+      "path": "reference/site-theme-wiring/theme-provider.tsx",
+      "gitBlobSha": "55c2f6eb60b22a313a4c27bd0b2d728063cb8ab9",
+      "bytes": 292
+    },
+    {
+      "source": "components/theme/siteTheme.test.ts",
+      "path": "reference/theme/siteTheme.test.ts",
+      "gitBlobSha": "87823898ffbc7b05bff5a38f0ffcd69b28120b5d",
+      "bytes": 6290
+    },
+    {
+      "source": "components/theme/siteTheme.ts",
+      "path": "reference/theme/siteTheme.ts",
+      "gitBlobSha": "56cc92187e49c51663cd46aa42f0b99481326479",
+      "bytes": 13781
+    },
+    {
+      "source": "components/theme/SiteThemeStyle.tsx",
+      "path": "reference/theme/SiteThemeStyle.tsx",
+      "gitBlobSha": "660f8fd9d3423a5ffa372c990d82b1eec841230c",
+      "bytes": 786
+    },
+    {
+      "source": "components/theme/themeMigration.test.ts",
+      "path": "reference/theme/themeMigration.test.ts",
+      "gitBlobSha": "033cb1451bff6a8da713581827bf9056a640b593",
+      "bytes": 3335
+    },
+    {
+      "source": "components/ThemeToggle.test.tsx",
+      "path": "reference/site-theme-wiring/ThemeToggle.test.tsx",
+      "gitBlobSha": "fa033ce4d0dc402287cbcebba0c16e3b4935b81e",
+      "bytes": 929
+    },
+    {
+      "source": "components/ThemeToggle.tsx",
+      "path": "reference/site-theme-wiring/ThemeToggle.tsx",
+      "gitBlobSha": "984238438a1ded9f0a570c393dfbd630fe05384d",
+      "bytes": 1418
+    },
+    {
+      "source": "components/updates/UpdateCard.tsx",
+      "path": "reference/widget-examples/updates/UpdateCard.tsx",
+      "gitBlobSha": "f2acdf6518a60f24b76f15e93ffaa9772be76159",
+      "bytes": 5906
+    },
+    {
+      "source": "components/updates/UpdateComposer.tsx",
+      "path": "reference/widget-examples/updates/UpdateComposer.tsx",
+      "gitBlobSha": "4928cbf536c7bf56cbc9d59ccb5629aadc86c803",
+      "bytes": 3052
+    },
+    {
+      "source": "components/updates/UpdateEditorControls.tsx",
+      "path": "reference/widget-examples/updates/UpdateEditorControls.tsx",
+      "gitBlobSha": "b367c22bdae76c5f10fa20da437be065534efb0c",
+      "bytes": 3404
+    },
+    {
+      "source": "components/updates/UpdatesAnnouncement.tsx",
+      "path": "reference/widget-examples/updates/UpdatesAnnouncement.tsx",
+      "gitBlobSha": "7d4282d1ddba930c16c7603a9e6e8527ee36cdf7",
+      "bytes": 4587
+    },
+    {
+      "source": "components/updates/updatesModel.test.ts",
+      "path": "reference/widget-examples/updates/updatesModel.test.ts",
+      "gitBlobSha": "4ff324585b6461339c6b1e408c35a2242d26b58d",
+      "bytes": 7428
+    },
+    {
+      "source": "components/updates/updatesModel.ts",
+      "path": "reference/widget-examples/updates/updatesModel.ts",
+      "gitBlobSha": "9b53157594abb37a68e5f74c2a85211d700809b2",
+      "bytes": 8479
+    },
+    {
+      "source": "components/updates/updatesPage.test.ts",
+      "path": "reference/widget-examples/updates/updatesPage.test.ts",
+      "gitBlobSha": "4ec829bb01a620bb5d5296c104f2602e57864cb8",
+      "bytes": 5689
+    },
+    {
+      "source": "components/updates/UpdateTypeFilter.tsx",
+      "path": "reference/widget-examples/updates/UpdateTypeFilter.tsx",
+      "gitBlobSha": "fd743ad06cbac7ccba9178ba682873e545853850",
+      "bytes": 2708
+    },
+    {
+      "source": "components/updates/useNow.ts",
+      "path": "reference/widget-examples/updates/useNow.ts",
+      "gitBlobSha": "658250067d2c4232c5dd810ff328b76fd450d515",
+      "bytes": 810
+    },
+    {
+      "source": "components/updates/useUpdatesSeen.ts",
+      "path": "reference/widget-examples/updates/useUpdatesSeen.ts",
+      "gitBlobSha": "dd0d330b419ad0a01ae6e7c5958e626673a1b346",
+      "bytes": 1884
+    },
+    {
+      "source": "content/blogDefaults.test.ts",
+      "path": "reference/content/blogDefaults.test.ts",
+      "gitBlobSha": "31a1c90c38cdc2ec6f060480856d88b98c985428",
+      "bytes": 2322
+    },
+    {
+      "source": "content/blogDefaults.ts",
+      "path": "reference/content/blogDefaults.ts",
+      "gitBlobSha": "63e0e7dece5588864d2686c8103b522d6c85a216",
+      "bytes": 2248
+    },
+    {
+      "source": "content/careers.ts",
+      "path": "reference/content/careers.ts",
+      "gitBlobSha": "2d8b03a372ec9f5699e645ac75b4dbd89d041014",
+      "bytes": 15355
+    },
+    {
+      "source": "content/projectDefaults.ts",
+      "path": "reference/content/projectDefaults.ts",
+      "gitBlobSha": "7faf2cf56a494264dc0202b4dbdd27e9830d5536",
+      "bytes": 4647
+    },
+    {
+      "source": "content/registry.extended.ts",
+      "path": "reference/content/registry.extended.ts",
+      "gitBlobSha": "fa2b1eee6105d57b17b0bfb65c7848bf38fc9113",
+      "bytes": 296
+    },
+    {
+      "source": "content/registry.ts",
+      "path": "reference/content/registry.ts",
+      "gitBlobSha": "2994b74b9b598e43676f2111d4723f2344ce8406",
+      "bytes": 29202
+    },
+    {
+      "source": "content/serviceDetailDefaults.test.ts",
+      "path": "reference/content/serviceDetailDefaults.test.ts",
+      "gitBlobSha": "316c806abc0a79deb8ba21711bf5853a03152d10",
+      "bytes": 2076
+    },
+    {
+      "source": "content/serviceDetailDefaults.ts",
+      "path": "reference/content/serviceDetailDefaults.ts",
+      "gitBlobSha": "d499569d4c1a946e912976884049d424fb876194",
+      "bytes": 4123
+    },
+    {
+      "source": "content/servicesRegistry.test.ts",
+      "path": "reference/content/servicesRegistry.test.ts",
+      "gitBlobSha": "f41eedf596b3a506753bf9eb8df3f0bc1bfe01b2",
+      "bytes": 2574
+    },
+    {
+      "source": "content/types.ts",
+      "path": "reference/content/types.ts",
+      "gitBlobSha": "1b2ad445d593db280ed4b3d9ce68d0f132a59d0f",
+      "bytes": 622
+    },
+    {
+      "source": "content/updateDefaults.ts",
+      "path": "reference/content/updateDefaults.ts",
+      "gitBlobSha": "1d95bb96d18e99f354f9e04f0ecdbb4a4f3b367c",
+      "bytes": 1755
+    },
+    {
+      "source": "db/migrations/202609160001_lock_page_contents.sql",
+      "path": "reference/db/migrations/202609160001_lock_page_contents.sql",
+      "gitBlobSha": "a303c83f31b4d35e989bcc829c2d03a407190ed3",
+      "bytes": 2861
+    },
+    {
+      "source": "db/migrations/202609280001_media_assets.sql",
+      "path": "reference/db/migrations/202609280001_media_assets.sql",
+      "gitBlobSha": "7b2a6a0372e27a30c36bb0dbf1ca6a9ae1817834",
+      "bytes": 1031
+    },
+    {
+      "source": "db/migrations/202610280001_cms_revision_history.sql",
+      "path": "reference/db/migrations/202610280001_cms_revision_history.sql",
+      "gitBlobSha": "cb0e1c60cc20501774643f565e28dfc44a4bb8a8",
+      "bytes": 3322
+    },
+    {
+      "source": "db/migrations/202610280002_cms_release_functions.sql",
+      "path": "reference/db/migrations/202610280002_cms_release_functions.sql",
+      "gitBlobSha": "f645ccb94a0039a5804d1695fb02be463279c582",
+      "bytes": 8030
+    },
+    {
+      "source": "db/migrations/202610280003_cms_restore_revision.sql",
+      "path": "reference/db/migrations/202610280003_cms_restore_revision.sql",
+      "gitBlobSha": "1d17d1d05fef3ee5557fb27fcb7aec2f7a4864b9",
+      "bytes": 5126
+    },
+    {
+      "source": "lib/api/assets/route.ts",
+      "path": "reference/api/assets/route.ts",
+      "gitBlobSha": "2fbcd7ed239689688c3022c63c47c13dd8a7541c",
+      "bytes": 3722
+    },
+    {
+      "source": "lib/api/assets/uploadErrors.test.ts",
+      "path": "reference/api/assets/uploadErrors.test.ts",
+      "gitBlobSha": "86524180022b89b915d0f7d3a79048193926a04a",
+      "bytes": 1010
+    },
+    {
+      "source": "lib/api/assets/validation.test.ts",
+      "path": "reference/api/assets/validation.test.ts",
+      "gitBlobSha": "aafea9a7d1ae61de26b9006ec265436f67a123e2",
+      "bytes": 1242
+    },
+    {
+      "source": "lib/api/assets/validation.ts",
+      "path": "reference/api/assets/validation.ts",
+      "gitBlobSha": "37aa01b78137c0e55beb726f4dc2652269d1f771",
+      "bytes": 1845
+    },
+    {
+      "source": "lib/api/cms/history/[slug]/[version]/restore/route.ts",
+      "path": "reference/api/cms/history/[slug]/[version]/restore/route.ts",
+      "gitBlobSha": "db9451d6ae91d4957bd4ee81c6fd8cd98716d60a",
+      "bytes": 2562
+    },
+    {
+      "source": "lib/api/cms/history/[slug]/[version]/route.ts",
+      "path": "reference/api/cms/history/[slug]/[version]/route.ts",
+      "gitBlobSha": "129ca140e237bba50e6df261f311e1c5e7e7ae94",
+      "bytes": 833
+    },
+    {
+      "source": "lib/api/cms/history/[slug]/route.ts",
+      "path": "reference/api/cms/history/[slug]/route.ts",
+      "gitBlobSha": "8d5d368345e43c56b91a210613d53591f2a3344c",
+      "bytes": 891
+    },
+    {
+      "source": "lib/api/cms/history/historyRoutes.test.ts",
+      "path": "reference/api/cms/history/historyRoutes.test.ts",
+      "gitBlobSha": "6a02bd5bb7a143f6b221c8f2db580f448ff8c4a4",
+      "bytes": 2869
+    },
+    {
+      "source": "lib/api/cms/history/restoreRoutes.test.ts",
+      "path": "reference/api/cms/history/restoreRoutes.test.ts",
+      "gitBlobSha": "dea40c14d055c7950a99432121c72d8f9086930f",
+      "bytes": 3673
+    },
+    {
+      "source": "lib/api/cms/history/shared.ts",
+      "path": "reference/api/cms/history/shared.ts",
+      "gitBlobSha": "2ba8d068d8d78c9d79ce7ceef411dee86dc170d6",
+      "bytes": 980
+    },
+    {
+      "source": "lib/api/cms/pages/[slug]/route.test.ts",
+      "path": "reference/api/cms/pages/[slug]/route.test.ts",
+      "gitBlobSha": "66add91c8ba2fef8cd24eb26f28b6b32d600cbd7",
+      "bytes": 2305
+    },
+    {
+      "source": "lib/api/cms/pages/[slug]/route.ts",
+      "path": "reference/api/cms/pages/[slug]/route.ts",
+      "gitBlobSha": "6bd0cc22bdd3dc54c7d8e771fa5a70661d12f4b7",
+      "bytes": 4177
+    },
+    {
+      "source": "lib/api/cms/pages/servicesRevalidation.test.ts",
+      "path": "reference/api/cms/pages/servicesRevalidation.test.ts",
+      "gitBlobSha": "210851aadcc46bbc91a2dc23ffaf398462012d0d",
+      "bytes": 1829
+    },
+    {
+      "source": "lib/api/cms/releases/route.test.ts",
+      "path": "reference/api/cms/releases/route.test.ts",
+      "gitBlobSha": "8dd071646114f1ab12e98e1613e15fc7ce1d37fe",
+      "bytes": 2891
+    },
+    {
+      "source": "lib/api/cms/releases/route.ts",
+      "path": "reference/api/cms/releases/route.ts",
+      "gitBlobSha": "b0f12acdf91140ca005b9f1f1fd6e7f06c782b10",
+      "bytes": 1870
+    },
+    {
+      "source": "lib/api/cms/session/route.test.ts",
+      "path": "reference/api/cms/session/route.test.ts",
+      "gitBlobSha": "41f196380527a2f601d19a2142f7ff0dfb8cf687",
+      "bytes": 3159
+    },
+    {
+      "source": "lib/api/cms/session/route.ts",
+      "path": "reference/api/cms/session/route.ts",
+      "gitBlobSha": "87b93283aff83851eca89f030e8809d270ec8606",
+      "bytes": 1589
+    },
+    {
+      "source": "lib/api/leads/route.ts",
+      "path": "reference/api/leads/route.ts",
+      "gitBlobSha": "d59d3cf0215bbaadf97145a6f8efb0e898893237",
+      "bytes": 1323
+    },
+    {
+      "source": "lib/api/media/[name]/route.test.ts",
+      "path": "reference/api/media/[name]/route.test.ts",
+      "gitBlobSha": "368421f48263863cac8cdca1f4584ee762eb560d",
+      "bytes": 1806
+    },
+    {
+      "source": "lib/api/media/[name]/route.ts",
+      "path": "reference/api/media/[name]/route.ts",
+      "gitBlobSha": "28efa995ca6c5c40c8bd86315fe17136c79891b9",
+      "bytes": 1493
+    },
+    {
+      "source": "lib/server/assetStorage.test.ts",
+      "path": "reference/server/assetStorage.test.ts",
+      "gitBlobSha": "7af0772ab17563b600ef9b5ef8b53ef5abeef8ca",
+      "bytes": 8652
+    },
+    {
+      "source": "lib/server/assetStorage.ts",
+      "path": "reference/server/assetStorage.ts",
+      "gitBlobSha": "f104f04b592d16aaf38c700edd41d56c616c5387",
+      "bytes": 5756
+    },
+    {
+      "source": "lib/server/assetUploadConfig.test.ts",
+      "path": "reference/server/assetUploadConfig.test.ts",
+      "gitBlobSha": "b84409c51c276db18db04bad8dde23a4afcb362d",
+      "bytes": 1546
+    },
+    {
+      "source": "lib/server/cmsAuth.test.ts",
+      "path": "reference/server/cmsAuth.test.ts",
+      "gitBlobSha": "13d7e232d35537f5b193ee396698c6eb5b3648c9",
+      "bytes": 2201
+    },
+    {
+      "source": "lib/server/cmsAuth.ts",
+      "path": "reference/server/cmsAuth.ts",
+      "gitBlobSha": "6f0ec8032177e2cfef6c8fa9175f6ab19a1280ba",
+      "bytes": 703
+    },
+    {
+      "source": "lib/server/cmsHistory.test.ts",
+      "path": "reference/server/cmsHistory.test.ts",
+      "gitBlobSha": "de960fc799caaf7dd25a73bbbd25a56ddc07df08",
+      "bytes": 3424
+    },
+    {
+      "source": "lib/server/cmsHistory.ts",
+      "path": "reference/server/cmsHistory.ts",
+      "gitBlobSha": "07aec0da74ec80543ffc5d7184d94923d113214d",
+      "bytes": 4525
+    },
+    {
+      "source": "lib/server/cmsRelease.test.ts",
+      "path": "reference/server/cmsRelease.test.ts",
+      "gitBlobSha": "66c09733cfbe19c743354420bd83052f5d1e4b5d",
+      "bytes": 2267
+    },
+    {
+      "source": "lib/server/cmsRelease.ts",
+      "path": "reference/server/cmsRelease.ts",
+      "gitBlobSha": "d467d461403a1d095d6efa736ad5387bf1a5d5c0",
+      "bytes": 2587
+    },
+    {
+      "source": "lib/server/cmsReleaseValidation.test.ts",
+      "path": "reference/server/cmsReleaseValidation.test.ts",
+      "gitBlobSha": "bd70f7f38247e62aede85f8ca7c21c1d31e01de3",
+      "bytes": 1170
+    },
+    {
+      "source": "lib/server/cmsReleaseValidation.ts",
+      "path": "reference/server/cmsReleaseValidation.ts",
+      "gitBlobSha": "c4cd7343024fc6b575348ebf5daa93ffd435e11d",
+      "bytes": 1983
+    },
+    {
+      "source": "lib/server/cmsRestore.test.ts",
+      "path": "reference/server/cmsRestore.test.ts",
+      "gitBlobSha": "bc4f9bafe0ba869fb48a3f3d9cbe125d18a8eea0",
+      "bytes": 2211
+    },
+    {
+      "source": "lib/server/cmsRestore.ts",
+      "path": "reference/server/cmsRestore.ts",
+      "gitBlobSha": "a463a003e3528f89c4a9687eb91c6c37ceb9146d",
+      "bytes": 2600
+    },
+    {
+      "source": "lib/server/cmsRevalidation.ts",
+      "path": "reference/server/cmsRevalidation.ts",
+      "gitBlobSha": "5f38b04045e66de479c2bbdbbf95277e5c024369",
+      "bytes": 1174
+    },
+    {
+      "source": "lib/server/cmsSession.test.ts",
+      "path": "reference/server/cmsSession.test.ts",
+      "gitBlobSha": "f1b7aa417be4595d9002e7065139f980b5c283ca",
+      "bytes": 2538
+    },
+    {
+      "source": "lib/server/cmsSession.ts",
+      "path": "reference/server/cmsSession.ts",
+      "gitBlobSha": "65d7977b7a628ca0f58b81d1bff5da1fb1fc3356",
+      "bytes": 2523
+    },
+    {
+      "source": "lib/server/contentStore.ts",
+      "path": "reference/server/contentStore.ts",
+      "gitBlobSha": "02b0ec02a2913805b0d76d28b9d3e2c790c6262c",
+      "bytes": 6348
+    },
+    {
+      "source": "lib/server/contentStorePrefix.test.ts",
+      "path": "reference/server/contentStorePrefix.test.ts",
+      "gitBlobSha": "3ff6b39e1dcda3baa81e130d6757959575718643",
+      "bytes": 2962
+    },
+    {
+      "source": "lib/server/databaseSchema.test.ts",
+      "path": "reference/server/databaseSchema.test.ts",
+      "gitBlobSha": "1aa266d3180551852cde3b4af2fbcc4de662e143",
+      "bytes": 1651
+    },
+    {
+      "source": "lib/server/databaseSchema.ts",
+      "path": "reference/server/databaseSchema.ts",
+      "gitBlobSha": "25c6278fa7a22cc931228871bce9651121f8704c",
+      "bytes": 1199
+    },
+    {
+      "source": "lib/server/db.ts",
+      "path": "reference/server/db.ts",
+      "gitBlobSha": "ec5e105d4414230082803b326a8122ae5f5b9031",
+      "bytes": 3016
+    },
+    {
+      "source": "lib/server/dbPool.test.ts",
+      "path": "reference/server/dbPool.test.ts",
+      "gitBlobSha": "61bcf9d3ef7c7310a3af4a5b6c7ea5982fbcb83c",
+      "bytes": 2180
+    },
+    {
+      "source": "lib/server/getPageContent.ts",
+      "path": "reference/server/getPageContent.ts",
+      "gitBlobSha": "b160ab12194e012606c66d40dadeadace9729a4d",
+      "bytes": 1898
+    },
+    {
+      "source": "lib/server/mediaStore.test.ts",
+      "path": "reference/server/mediaStore.test.ts",
+      "gitBlobSha": "4da8fbe5954e2f2296b7d982684eeb2ed4175c3c",
+      "bytes": 598
+    },
+    {
+      "source": "lib/server/mediaStore.ts",
+      "path": "reference/server/mediaStore.ts",
+      "gitBlobSha": "4b308999cf6d5f7bc079227fef319695ccbd9155",
+      "bytes": 2257
+    },
+    {
+      "source": "lib/server/supabaseDatabase.test.ts",
+      "path": "reference/server/supabaseDatabase.test.ts",
+      "gitBlobSha": "8a1e13acd11d62ad65bc93d0632f4bcbeab566f5",
+      "bytes": 4642
+    },
+    {
+      "source": "lib/server/supabaseDatabase.ts",
+      "path": "reference/server/supabaseDatabase.ts",
+      "gitBlobSha": "2d44d66682878490e40f4c562a368564480e37c2",
+      "bytes": 7013
+    },
+    {
+      "source": "lib/services/cms.service.test.ts",
+      "path": "reference/services/cms.service.test.ts",
+      "gitBlobSha": "247d8c9f34a75b3b011f76a8b934f8f32203684e",
+      "bytes": 2401
+    },
+    {
+      "source": "lib/services/cms.service.ts",
+      "path": "reference/services/cms.service.ts",
+      "gitBlobSha": "8833bac63d5fe566f2e0d57a59aea8402a302c73",
+      "bytes": 3855
+    },
+    {
+      "source": "lib/theme/contrast.test.ts",
+      "path": "reference/theme-utils/contrast.test.ts",
+      "gitBlobSha": "126283eeec3de5c687792decc1939540f825733c",
+      "bytes": 1532
+    },
+    {
+      "source": "lib/theme/contrast.ts",
+      "path": "reference/theme-utils/contrast.ts",
+      "gitBlobSha": "b91a75c3ac5972181c9df800a30f4146a462c56c",
+      "bytes": 1874
+    },
+    {
+      "source": "lib/theme/tokens.test.ts",
+      "path": "reference/theme-utils/tokens.test.ts",
+      "gitBlobSha": "c494697d1afa640f9ed9afc0f241966297e585ac",
+      "bytes": 1964
+    },
+    {
+      "source": "lib/theme/tokens.ts",
+      "path": "reference/theme-utils/tokens.ts",
+      "gitBlobSha": "9f5d9e1601881752ce11e61b26f4f5622faab147",
+      "bytes": 1280
+    },
+    {
+      "source": "next.config.mjs",
+      "path": "reference/site-styles/next.config.mjs",
+      "gitBlobSha": "dfe9abaaf3c24a193e2dd11b53801b55700e1e0e",
+      "bytes": 1969
+    },
+    {
+      "source": "package.json",
+      "path": "reference/site-styles/package.json",
+      "gitBlobSha": "9b58e2d4ddca9d9a3ae4bcd4c64328fd98f29013",
+      "bytes": 3245
+    },
+    {
+      "source": "postcss.config.mjs",
+      "path": "reference/site-styles/postcss.config.mjs",
+      "gitBlobSha": "80b0fb2d1c5ac81141c8ad4c239ca7790bf6d441",
+      "bytes": 13149
+    },
+    {
+      "source": "scripts/apply-database-migrations.mjs",
+      "path": "reference/db/scripts/apply-database-migrations.mjs",
+      "gitBlobSha": "49599ff986b9265344a5acfb1e472c3cb7674c4f",
+      "bytes": 9327
+    },
+    {
+      "source": "scripts/apply-database-migrations.test.ts",
+      "path": "reference/db/scripts/apply-database-migrations.test.ts",
+      "gitBlobSha": "b39fc3dff0018d0fb1ac256f8eb9386f5e53fb99",
+      "bytes": 5634
+    },
+    {
+      "source": "scripts/cms-release-integration.test.ts",
+      "path": "reference/db/scripts/cms-release-integration.test.ts",
+      "gitBlobSha": "77ce0fc6112b40251ded492c52762ee9835a9b8f",
+      "bytes": 9041
+    },
+    {
+      "source": "scripts/cms-release-sql.test.ts",
+      "path": "reference/db/scripts/cms-release-sql.test.ts",
+      "gitBlobSha": "230241c2924a1e08b126e02542c1993de64134fe",
+      "bytes": 1083
+    },
+    {
+      "source": "scripts/cms-revision-migration.test.ts",
+      "path": "reference/db/scripts/cms-revision-migration.test.ts",
+      "gitBlobSha": "5d532c1de4fdb218c41fa67990027345610eafcf",
+      "bytes": 3890
+    },
+    {
+      "source": "scripts/database-security-config.test.ts",
+      "path": "reference/db/scripts/database-security-config.test.ts",
+      "gitBlobSha": "11f00c812ae7823260dc8659cb774b6501e6e6c9",
+      "bytes": 3605
+    },
+    {
+      "source": "styles/globals.css",
+      "path": "reference/site-styles/styles/globals.css",
+      "gitBlobSha": "ac6844236cb8a3195672afa1ea2867e0853a9618",
+      "bytes": 2428
+    },
+    {
+      "source": "tailwind.config.ts",
+      "path": "reference/site-styles/tailwind.config.ts",
+      "gitBlobSha": "3fffb87cb28232cbe0831db372b56581954fb994",
+      "bytes": 3605
+    }
+  ]
+}

@@ -78,3 +78,16 @@ export function getCmsSessionSecret(request: Request): string | null {
     ? "dev"
     : null;
 }
+
+/**
+ * Whether the current request carries a valid CMS session. Server
+ * components read cookies directly, so they cannot use cmsAuthorized,
+ * which expects a Request.
+ */
+export async function hasCmsSessionCookie(
+  cookieValue: string | undefined,
+): Promise<boolean> {
+  const secret = process.env.CMS_EDIT_KEY;
+  if (!secret || !cookieValue) return false;
+  return verifyCmsSessionToken(cookieValue, secret);
+}

@@ -48,7 +48,10 @@ describe("CmsService browser session", () => {
       }),
     );
 
-    await CmsService.publish("home");
+    await CmsService.publishRelease({
+      requestId: "7c0f4581-1e23-4b39-862d-9bbf2dc19701",
+      documents: [{ slug: "home", expectedVersion: 0, expectedDraftRevision: 0, document: {} }],
+    });
 
     const options = fetchMock.mock.calls[0][1] as RequestInit;
     expect(new Headers(options.headers).has("x-cms-key")).toBe(false);

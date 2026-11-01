@@ -23,7 +23,9 @@ describe("page animation target wiring", () => {
   });
 
   it("uses normalized stable IDs for reorderable content", () => {
-    expect(source("HomePage.tsx")).toContain("service.id");
+    // Home service cards now come from the services catalogue, keyed by the
+    // same normalized IDs the animation editor targets.
+    expect(source("../home/ServiceCarousel.tsx")).toContain("entry.id");
     expect(source("AboutPage.tsx")).toContain("company.id");
     expect(source("ServicesPage.tsx")).toContain("service.id");
     expect(source("CertificationsPage.tsx")).toContain("certificate.id");

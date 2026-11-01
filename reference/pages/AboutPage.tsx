@@ -47,14 +47,14 @@ export default function AboutPage({ content }: { content: JsonObject }) {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="overview" label="Company overview" className="bg-white py-16">
+      <AnimatedSection id="overview" label="Company overview" className="bg-background py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center gap-12 md:flex-row">
             <div className="md:w-1/2">
-              <AnimatedElement id="overview-title" type="heading" label="Company overview heading" as="h2" className="mb-6 text-3xl font-bold text-gray-900">
+              <AnimatedElement id="overview-title" type="heading" label="Company overview heading" as="h2" className="mb-6 text-3xl font-bold text-foreground">
                 <E path={["overview", "title"]} value={String(overview.title ?? "")} as="span" />
               </AnimatedElement>
-              <div className="space-y-4 text-lg text-gray-700">
+              <div className="space-y-4 text-lg text-muted-foreground">
                 {(Array.isArray(overview.paragraphs) ? (overview.paragraphs as string[]) : []).map((text, index) => (
                   <AnimatedElement key={index} id={`overview-paragraph-${index}`} type="text" label={`Company overview paragraph ${index + 1}`} staggerIndex={index} as="p">
                     <E path={["overview", "paragraphs", index]} value={text} as="span" />
@@ -69,18 +69,18 @@ export default function AboutPage({ content }: { content: JsonObject }) {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="history" label="Company history" className="bg-gray-50 py-16">
+      <AnimatedSection id="history" label="Company history" className="bg-muted py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center gap-12 md:flex-row-reverse">
             <div className="md:w-1/2">
-              <AnimatedElement id="history-title" type="heading" label="Company history heading" as="h2" className="mb-6 text-3xl font-bold text-gray-900">
+              <AnimatedElement id="history-title" type="heading" label="Company history heading" as="h2" className="mb-6 text-3xl font-bold text-foreground">
                 <E path={["history", "title"]} value={String(history.title ?? "")} as="span" />
               </AnimatedElement>
-              <AnimatedElement id="history-description" type="text" label="Company history description" as="p" className="mb-4 text-lg text-gray-700">
+              <AnimatedElement id="history-description" type="text" label="Company history description" as="p" className="mb-4 text-lg text-muted-foreground">
                 <E path={["history", "description"]} value={String(history.description ?? "")} as="span" />
               </AnimatedElement>
               {(history.extra || history.extra === "") && (
-                <AnimatedElement id="history-extra" type="text" label="Company history extra text" as="p" className="text-lg text-gray-700">
+                <AnimatedElement id="history-extra" type="text" label="Company history extra text" as="p" className="text-lg text-muted-foreground">
                   <E path={["history", "extra"]} value={String(history.extra ?? "")} as="span" />
                 </AnimatedElement>
               )}
@@ -92,13 +92,13 @@ export default function AboutPage({ content }: { content: JsonObject }) {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="visionMission" label="Vision and mission" className="bg-green-700 py-16 text-white">
+      <AnimatedSection id="visionMission" label="Vision and mission" className="bg-band py-16 text-band-foreground">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12 text-center">
             <AnimatedElement id="vision-mission-title" type="heading" label="Vision and mission heading" as="h2" className="mb-4 text-3xl font-bold">
               <E path={["visionMission", "title"]} value={String(visionMission.title ?? "")} as="span" />
             </AnimatedElement>
-            <AnimatedElement id="vision-mission-description" type="text" label="Vision and mission description" as="p" className="mx-auto max-w-3xl text-lg text-white/90">
+            <AnimatedElement id="vision-mission-description" type="text" label="Vision and mission description" as="p" className="mx-auto max-w-3xl text-lg text-band-foreground">
               <E path={["visionMission", "description"]} value={String(visionMission.description ?? "")} as="span" />
             </AnimatedElement>
           </div>
@@ -119,14 +119,14 @@ export default function AboutPage({ content }: { content: JsonObject }) {
                 fallback: "Briefcase",
               },
             ].map((item, index) => (
-              <AnimatedElement key={item.id} id={item.id} type="card" label={`${item.id} card`} sectionId="visionMission" staggerIndex={index} className="rounded-lg bg-green-800/50 p-8">
+              <AnimatedElement key={item.id} id={item.id} type="card" label={`${item.id} card`} sectionId="visionMission" staggerIndex={index} className="rounded-lg bg-band-strong p-8">
                 <div className="mb-4 flex items-center">
-                  <EditableIcon path={["visionMission", item.iconKey]} value={visionMission[item.iconKey]} fallback={item.fallback} className="mr-3 h-8 w-8" />
+                  <EditableIcon path={["visionMission", item.iconKey]} value={visionMission[item.iconKey]} fallback={item.fallback} className="mr-3 h-8 w-8 text-band-accent" />
                   <h3 className="text-2xl font-bold">
                     <E path={["visionMission", item.headingKey]} value={String(visionMission[item.headingKey] ?? "")} as="span" />
                   </h3>
                 </div>
-                <p className="text-lg text-white/90">
+                <p className="text-lg text-band-foreground">
                   <E path={["visionMission", item.textKey]} value={String(visionMission[item.textKey] ?? "")} as="span" />
                 </p>
               </AnimatedElement>
@@ -135,27 +135,27 @@ export default function AboutPage({ content }: { content: JsonObject }) {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="directorMessage" label="Managing director message" className="bg-white py-16">
+      <AnimatedSection id="directorMessage" label="Managing director message" className="bg-background py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center gap-12 md:flex-row">
             <AnimatedElement id="director-image" type="image" label="Managing director image" className="relative h-[800px] w-full overflow-hidden rounded-lg shadow-xl md:w-1/3">
               <EImg path={["directorMessage", "image"]} image={directorMessage.image as any} className="h-full w-full object-cover" />
             </AnimatedElement>
             <div className="md:w-2/3">
-              <AnimatedElement id="director-title" type="heading" label="Managing director message heading" as="h2" className="mb-6 text-3xl font-bold text-gray-900">
+              <AnimatedElement id="director-title" type="heading" label="Managing director message heading" as="h2" className="mb-6 text-3xl font-bold text-foreground">
                 <E path={["directorMessage", "title"]} value={String(directorMessage.title ?? "")} as="span" />
               </AnimatedElement>
-              <blockquote className="mb-6 border-l-4 border-green-700 pl-6 text-lg text-gray-700">
+              <blockquote className="mb-6 border-l-4 border-brand pl-6 text-lg text-muted-foreground">
                 {(Array.isArray(directorMessage.paragraphs) ? (directorMessage.paragraphs as string[]) : []).map((text, index) => (
                   <AnimatedElement key={index} id={`director-paragraph-${index}`} type="text" label={`Managing director paragraph ${index + 1}`} staggerIndex={index} as="p" className="mb-4">
                     <E path={["directorMessage", "paragraphs", index]} value={text} as="span" />
                   </AnimatedElement>
                 ))}
               </blockquote>
-              <AnimatedElement id="director-name" type="heading" label="Managing director name" as="p" className="text-xl font-semibold text-gray-900">
+              <AnimatedElement id="director-name" type="heading" label="Managing director name" as="p" className="text-xl font-semibold text-foreground">
                 <E path={["directorMessage", "name"]} value={String(directorMessage.name ?? "")} as="span" />
               </AnimatedElement>
-              <AnimatedElement id="director-role" type="text" label="Managing director role" as="p" className="text-gray-600">
+              <AnimatedElement id="director-role" type="text" label="Managing director role" as="p" className="text-muted-foreground">
                 <E path={["directorMessage", "role"]} value={String(directorMessage.role ?? "")} as="span" />
               </AnimatedElement>
             </div>
@@ -163,10 +163,10 @@ export default function AboutPage({ content }: { content: JsonObject }) {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="groupCompanies" label="Group companies" className="bg-gray-50 py-16">
+      <AnimatedSection id="groupCompanies" label="Group companies" className="bg-muted py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12 text-center">
-            <AnimatedElement id="group-companies-title" type="heading" label="Group companies heading" as="h2" className="mb-4 text-3xl font-bold text-gray-900">
+            <AnimatedElement id="group-companies-title" type="heading" label="Group companies heading" as="h2" className="mb-4 text-3xl font-bold text-foreground">
               <E path={["groupCompaniesTitle"]} value={groupCompaniesTitle} as="span" />
             </AnimatedElement>
           </div>
@@ -174,7 +174,7 @@ export default function AboutPage({ content }: { content: JsonObject }) {
             {groupCompanies.map((company, index) => {
               const itemId = String(company.id ?? `group-company-${index}`);
               return (
-                <AnimatedElement key={itemId} id={itemId} type="card" label={String(company.name ?? `Group company ${index + 1}`)} sectionId="groupCompanies" staggerIndex={index} className="overflow-hidden rounded-lg bg-gray-50 shadow-lg">
+                <AnimatedElement key={itemId} id={itemId} type="card" label={String(company.name ?? `Group company ${index + 1}`)} sectionId="groupCompanies" staggerIndex={index} className="overflow-hidden rounded-lg bg-card shadow-lg">
                   <div className="relative h-[280px] w-full">
                     <EImg
                       path={["groupCompanies", index, "image"]}
@@ -184,10 +184,10 @@ export default function AboutPage({ content }: { content: JsonObject }) {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="mb-2 text-xl font-bold text-gray-900">
+                    <h3 className="mb-2 text-xl font-bold text-foreground">
                       <E path={["groupCompanies", index, "name"]} value={String(company.name ?? "")} as="span" />
                     </h3>
-                    <p className="text-gray-700">
+                    <p className="text-muted-foreground">
                       <E path={["groupCompanies", index, "description"]} value={String(company.description ?? "")} as="span" />
                     </p>
                   </div>

@@ -1,9 +1,16 @@
 import type { JsonObject } from "@/components/cms/json";
+import { defaultBlogIndex } from "./blogDefaults";
+import { defaultProjectIndex } from "./projectDefaults";
+import { defaultUpdatesIndex } from "./updateDefaults";
+import { defaultSiteTheme } from "@/components/theme/siteTheme";
 
 export const CONTENT_REGISTRY: Record<string, JsonObject> = {
   site: {
+    theme: defaultSiteTheme(),
     navbar: {
       logo: { src: "/images/SMTS_logo.svg", alt: "SMTS Contracting LLC" },
+      logoDark: { src: "/images/SMTS_logo.svg", alt: "SMTS Contracting LLC" },
+      logoDarkPlate: true,
       links: [
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
@@ -15,6 +22,8 @@ export const CONTENT_REGISTRY: Record<string, JsonObject> = {
     },
     footer: {
       logo: { src: "/images/SMTS_logo.svg", alt: "SMTS Contracting LLC" },
+      logoDark: { src: "/images/SMTS_logo.svg", alt: "SMTS Contracting LLC" },
+      logoDarkPlate: true,
       company: "SMTS Contracting LLC",
       description:
         "SMTS Contracting LLC is a leading UAE-based contracting company specializing in building contracting, maintenance, steel structure fabrication, and more.",
@@ -124,6 +133,14 @@ export const CONTENT_REGISTRY: Record<string, JsonObject> = {
       { name: "Build in Dubai", logo: "/images/Client_logo/Build-in-Dubai.jpg" },
       { name: "Dubai Customs", logo: "/images/Client_logo/Dubai-Customs-PCFC.jpg" },
     ],
+    latestUpdates: {
+      eyebrow: "News & Updates",
+      title: "Latest from Our Sites",
+      subtitle:
+        "Progress, milestones and announcements from the SMTS team — posted as it happens.",
+      buttonText: "See all updates",
+      count: 3,
+    },
     cta: {
       title: "Ready to Start Your Project?",
       description:
@@ -218,94 +235,141 @@ export const CONTENT_REGISTRY: Record<string, JsonObject> = {
     services: [
       {
         title: "Building Contracting",
+        slug: "building-contracting",
         description:
           "Building contracting involves managing construction projects, ensuring timely, budget-friendly completion with highquality standards. Contractors oversee planning, design, and coordination across all disciplines, including structural, electrical, and mechanical works.",
         icon: "/images/services-icons/building-contracting.svg",
         image: "/images/services/services-buildcontract.jpeg?height=600&width=800",
-      },
-      {
-        title: "Building Maintenance",
-        description:
-          "Building maintenance involves regular inspections, repairs, and servicing to ensure the functionality, safety, and appearance of a building. It includes tasks like plumbing, electrical work, HVAC maintenance, and general upkeep, ensuring the building remains in optimal condition.",
-        icon: "/images/services-icons/building-maintenance.svg",
-        image: "/images/services/services-buildmaintanence.jpeg?height=600&width=800",
+        children: [
+          {
+            title: "Villa Construction",
+            slug: "villa-construction",
+            description:
+              "End-to-end villa construction, from foundations and structure to finishes and handover.",
+            icon: "/images/services-icons/building-contracting.svg",
+            image: "/images/services/services-buildcontract.jpeg",
+          },
+          {
+            title: "Meet Me Room",
+            slug: "meet-me-room",
+            description:
+              "Purpose-built meet-me rooms with the containment, power and cooling that carrier interconnects require.",
+            icon: "/images/services-icons/building-contracting.svg",
+            image: "/images/services/services-buildcontract.jpeg",
+          },
+          {
+            title: "Service Block",
+            slug: "service-block",
+            description:
+              "Service blocks delivered as a complete package — structure, MEP and finishes coordinated on one programme.",
+            icon: "/images/services-icons/building-contracting.svg",
+            image: "/images/services/services-buildcontract.jpeg",
+          },
+          {
+            title: "Building Maintenance",
+            slug: "building-maintenance",
+            description:
+              "Building maintenance involves regular inspections, repairs, and servicing to ensure the functionality, safety, and appearance of a building. It includes tasks like plumbing, electrical work, HVAC maintenance, and general upkeep, ensuring the building remains in optimal condition.",
+            icon: "/images/services-icons/building-maintenance.svg",
+            image: "/images/services/services-buildmaintanence.jpeg?height=600&width=800",
+          },
+          {
+            title: "Interior Works",
+            slug: "interior-works",
+            description:
+              "Bring your vision to life with our bespoke interior works. From elegant designs to flawless finishes, we create spaces that inspire and reflect your style. Transform your interiors with us.",
+            icon: "/images/services-icons/interior-works.svg",
+            image: "/images/services/services-interiors.jpeg?height=600&width=800",
+          },
+        ],
       },
       {
         title: "Shade Installation",
+        slug: "shade-installation",
         description:
           "Stay cool and protected with our expert shade installation services. Combining functionality with style, we provide durable solutions tailored to your needs. Shade up your space with us.",
         icon: "/images/services-icons/shade-installation.svg",
         image: "/images/services/services-shades.jpeg?height=600&width=800",
-      },
-      {
-        title: "Steel Structure Fabrication",
-        description:
-          "Steel structure fabrication involves the design, cutting, shaping, and assembling of steel components for construction projects. This process ensures the creation of durable, high-strength frameworks for buildings and other infrastructure, tailored to specific project requirements.",
-        icon: "/images/services-icons/steel-structure-fabrication.svg",
-        image: "/images/services/services-steelstructure.jpeg?height=600&width=800",
+        children: [
+          {
+            title: "Steel Structure Fabrication",
+            slug: "steel-structure-fabrication",
+            description:
+              "Steel structure fabrication involves the design, cutting, shaping, and assembling of steel components for construction projects. This process ensures the creation of durable, high-strength frameworks for buildings and other infrastructure, tailored to specific project requirements.",
+            icon: "/images/services-icons/steel-structure-fabrication.svg",
+            image: "/images/services/services-steelstructure.jpeg?height=600&width=800",
+          },
+        ],
       },
       {
         title: "Electrical Works",
+        slug: "electrical-works",
         description:
           "Power up your projects with our reliable electrical services. From installations to maintenance, we ensure safety, efficiency, and excellence in every connection. Your trusted partner for all things electrical.",
         icon: "/images/services-icons/electrical-works.svg",
         image: "/images/services/service-electrical.jpg?height=600&width=800",
-      },
-      {
-        title: "Plumbing Works",
-        description:
-          "Ensure smooth flow with our professional plumbing services. From installations to repairs, we deliver reliable solutions with precision and care. Your trusted partner for all your plumbing needs.",
-        icon: "/images/services-icons/plumbing-works.svg",
-        image: "/images/our_service_2.svg?height=600&width=800",
+        children: [
+          {
+            title: "Plumbing Works",
+            slug: "plumbing-works",
+            description:
+              "Ensure smooth flow with our professional plumbing services. From installations to repairs, we deliver reliable solutions with precision and care. Your trusted partner for all your plumbing needs.",
+            icon: "/images/services-icons/plumbing-works.svg",
+            image: "/images/our_service_2.svg?height=600&width=800",
+          },
+        ],
       },
       {
         title: "Epoxy Floor Painting",
+        slug: "epoxy-floor-painting",
         description:
           "Durable, seamless, and tailored to perfection—our industrial flooring paint solutions ensure strength and style. Enhance your floors with lasting quality and professional precision.",
         icon: "/images/services-icons/epoxy-floor-painting.svg",
         image: "/images/services/services-epoxy.jpeg?height=600&width=800",
-      },
-      {
-        title: "Industrial Floor Screeding",
-        description:
-          "We provide high-quality industrial floor screeding, delivering durable, smooth, and level surfaces for heavy-duty environmnts like warehouses and factories. Our advanced techniques enhance load capacity and floor aesthetics, preparing surfaces for final finishes.",
-        icon: "/images/services-icons/industrial-floor-screeding.svg",
-        image: "/images/services/services-indusfloor.jpg?height=600&width=800",
+        children: [
+          {
+            title: "Industrial Floor Screeding",
+            slug: "industrial-floor-screeding",
+            description:
+              "We provide high-quality industrial floor screeding, delivering durable, smooth, and level surfaces for heavy-duty environmnts like warehouses and factories. Our advanced techniques enhance load capacity and floor aesthetics, preparing surfaces for final finishes.",
+            icon: "/images/services-icons/industrial-floor-screeding.svg",
+            image: "/images/services/services-indusfloor.jpg?height=600&width=800",
+          },
+        ],
       },
       {
         title: "Landscaping Works",
+        slug: "landscaping-works",
         description:
           "Transform your outdoor space into a stunning oasis with our expert landscaping services. From lush gardens to elegant hardscapes, we bring nature's beauty to your doorstep. Let's create a landscape that inspires.",
         icon: "/images/services-icons/landscaping-works.svg",
         image: "/images/services/services-landscaping.jpg?height=600&width=800",
       },
       {
-        title: "Interior Works",
-        description:
-          "Bring your vision to life with our bespoke interior works. From elegant designs to flawless finishes, we create spaces that inspire and reflect your style. Transform your interiors with us.",
-        icon: "/images/services-icons/interior-works.svg",
-        image: "/images/services/services-interiors.jpeg?height=600&width=800",
-      },
-      {
         title: "Greenhouse Installation",
+        slug: "greenhouse-installation",
         description:
           "Grow smarter with our greenhouse installation services. Designed for efficiency and durability, we create spaces where your plants thrive. Let's build your green future today",
         icon: "/images/services-icons/greenhouse-installation.svg",
         image: "/images/services/services-greenhouse.jpeg?height=600&width=800",
-      },
-      {
-        title: "Climate Control Installation",
-        description:
-          "Achieve perfect conditions with our climate control installation services. Designed for precision and efficiency, we create environments that adapt to your needs. Experience comfort redefined.",
-        icon: "/images/services-icons/climate-control.svg",
-        image: "/images/services/services-climate.jpg?height=600&width=800",
-      },
-      {
-        title: "Retractable Roof Installation",
-        description:
-          "Experience versatility and elegance with our retractable roof installation services. Seamlessly blending style and functionality, we create spaces that adapt to every moment. Open up to endless possibilities.",
-        icon: "/images/services-icons/retractable-roof-installation.svg",
-        image: "/images/services/services-retractableroof.jpg?height=600&width=800",
+        children: [
+          {
+            title: "Climate Control Installation",
+            slug: "climate-control-installation",
+            description:
+              "Achieve perfect conditions with our climate control installation services. Designed for precision and efficiency, we create environments that adapt to your needs. Experience comfort redefined.",
+            icon: "/images/services-icons/climate-control.svg",
+            image: "/images/services/services-climate.jpg?height=600&width=800",
+          },
+          {
+            title: "Retractable Roof Installation",
+            slug: "retractable-roof-installation",
+            description:
+              "Experience versatility and elegance with our retractable roof installation services. Seamlessly blending style and functionality, we create spaces that adapt to every moment. Open up to endless possibilities.",
+            icon: "/images/services-icons/retractable-roof-installation.svg",
+            image: "/images/services/services-retractableroof.jpg?height=600&width=800",
+          },
+        ],
       },
     ],
     quality: {
@@ -327,6 +391,9 @@ export const CONTENT_REGISTRY: Record<string, JsonObject> = {
       image: { src: "/images/services/services-client.jpg?height=800&width=1200", alt: "Client Meeting" },
     },
   },
+  blogs: defaultBlogIndex(),
+  projects: defaultProjectIndex(),
+  updates: defaultUpdatesIndex(),
   contact: {
     hero: {
       title: "Contact Us",

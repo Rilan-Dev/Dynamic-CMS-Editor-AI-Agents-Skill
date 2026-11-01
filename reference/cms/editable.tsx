@@ -28,6 +28,7 @@ import type { ImageRef } from "@/content/types";
 import type { PathSegment } from "./json";
 import { cn } from "@/lib/cn";
 import { uploadAsset } from "./uploadAsset";
+import { cmsPathKey } from "./cmsIssues";
 
 /* ---------------- text ---------------- */
 
@@ -53,7 +54,7 @@ export function E({
   multilineBreaks?: boolean;
   /** store the edited text as a number (stat values etc.) */
   numeric?: boolean;
-  /** which document the path belongs to (page doc or site chrome) */
+  /** which document the path belongs to (page, site chrome, or `doc:<slug>`) */
   scope?: DocScope;
 }) {
   const { editing, epoch, ready } = useCmsEditing();
@@ -128,6 +129,7 @@ function EditableTextLeaf({
       contentEditable
       suppressContentEditableWarning
       spellCheck={false}
+      data-cms-path={cmsPathKey(scope, path)}
       onInput={commit}
       onPaste={(e: React.ClipboardEvent) => {
         // always paste as PLAIN text — never the source formatting

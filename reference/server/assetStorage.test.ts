@@ -183,3 +183,60 @@ describe("uploadAsset", () => {
     ).rejects.toThrow("Supabase asset URL is unavailable");
   });
 });
+
+describe("uploadAsset database fallback", () => {
+  const supabaseEnv = {
+    ASSET_STORAGE_DRIVER: "supabase",
+    SUPABASE_URL: "https://example.supabase.co",
+    SUPABASE_SECRET_KEY: "anon-key",
+    SUPABASE_STORAGE_BUCKET: "smts-media",
+  };
+  const refusingClient = () => {
+    const upload = vi.fn().mockResolvedValue({
+      data: null,
+      error: { message: "new row violates row-level security policy" },
+    });
+    const from = vi.fn().mockReturnValue({ upload, getPublicUrl: vi.fn() });
+    return vi.fn().mockReturnValue({ storage: { from } });
+  };
+
+  it("stores the file in the database when storage refuses the write", async () => {
+    const saveToDatabase = vi.fn().mockResolvedValue({ url: "/media/photo.png" });
+    const result = await uploadAsset(input, {
+      env: { ...supabaseEnv, DATABASE_URL: "postgres://db" },
+      createClient: refusingClient(),
+      saveToDatabase,
+    });
+    expect(saveToDatabase).toHaveBeenCalledWith(input);
+    expect(result).toEqual({ url: "/media/photo.png" });
+  });
+
+  it("stores the file in the database when storage is not configured", async () => {
+    const saveToDatabase = vi.fn().mockResolvedValue({ url: "/media/photo.png" });
+    await uploadAsset(input, {
+      env: { ASSET_STORAGE_DRIVER: "supabase", DATABASE_URL: "postgres://db" },
+      saveToDatabase,
+    });
+    expect(saveToDatabase).toHaveBeenCalledOnce();
+  });
+
+  it("still surfaces the refusal when there is no database", async () => {
+    await expect(
+      uploadAsset(input, { env: supabaseEnv, createClient: refusingClient() }),
+    ).rejects.toThrow(/row-level security/);
+  });
+
+  it("does not mask an unexpected storage failure", async () => {
+    const upload = vi.fn().mockResolvedValue({ data: null, error: { message: "fetch failed" } });
+    const from = vi.fn().mockReturnValue({ upload, getPublicUrl: vi.fn() });
+    const saveToDatabase = vi.fn();
+    await expect(
+      uploadAsset(input, {
+        env: { ...supabaseEnv, DATABASE_URL: "postgres://db" },
+        createClient: vi.fn().mockReturnValue({ storage: { from } }),
+        saveToDatabase,
+      }),
+    ).rejects.toThrow(/fetch failed/);
+    expect(saveToDatabase).not.toHaveBeenCalled();
+  });
+});

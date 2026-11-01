@@ -1,0 +1,352 @@
+.scope {
+  min-width: 0;
+  width: 100%;
+}
+
+.socialScope,
+.serviceScope {
+  position: relative;
+}
+
+:global(body.cms-editing) :global(div):has(> .socialScope) > :global(a) {
+  display: none;
+}
+
+:global(body.cms-editing) :global(div):has(> .socialScope) {
+  display: block;
+  width: 100%;
+}
+
+:global(body.cms-editing)
+  :global(ul):has(+ :global(div) > .serviceScope) {
+  display: none;
+}
+
+:global(body.cms-editing)
+  :global(ul):has(+ :global(div) > .serviceScope)
+  + :global(div) {
+  margin-top: 0;
+}
+
+.scope:global(.cms-footer-inline-editor) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.scope :global(.cms-footer-social-grid) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+.scope :global(.cms-footer-social-card) {
+  min-width: 0;
+  padding: 10px;
+  color: #e5e7eb;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 12px;
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease,
+    box-shadow 0.16s ease,
+    opacity 0.16s ease;
+}
+
+.scope :global(.cms-footer-social-card:hover) {
+  border-color: rgba(74, 222, 128, 0.45);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.scope :global(.cms-footer-social-card--disabled) {
+  opacity: 0.68;
+}
+
+.scope :global(.cms-footer-social-card--error),
+.scope :global(.cms-footer-service-row--error) {
+  border-color: rgba(248, 113, 113, 0.58);
+  background: rgba(127, 29, 29, 0.24);
+}
+
+.scope :global(.cms-footer-social-card-head) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  margin-bottom: 8px;
+}
+
+.scope :global(.cms-footer-social-brand) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+}
+
+.scope :global(.cms-footer-social-label) {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scope :global(.cms-footer-inline-input),
+.scope :global(.cms-footer-service-search input) {
+  width: 100%;
+  min-width: 0;
+  padding: 8px 10px;
+  color: #f8fafc;
+  font-size: 12px;
+  line-height: 1.35;
+  background: rgba(2, 6, 23, 0.68);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 9px;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.scope :global(.cms-footer-inline-input::placeholder),
+.scope :global(.cms-footer-service-search input::placeholder) {
+  color: #94a3b8;
+}
+
+.scope :global(.cms-footer-inline-input:focus),
+.scope :global(.cms-footer-service-search input:focus) {
+  background: rgba(2, 6, 23, 0.9);
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.22);
+}
+
+.scope :global(.cms-footer-inline-error) {
+  margin-top: 7px;
+  color: #fecaca;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.scope :global(.cms-footer-inline-add-row) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+}
+
+.scope :global(.cms-add--icon-only) {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  flex: 0 0 auto;
+}
+
+.scope :global(.cms-add--icon-only:disabled) {
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.08);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.scope :global(.cms-footer-inline-tray) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  color: #e2e8f0;
+  background: rgba(2, 6, 23, 0.68);
+  border: 1px dashed rgba(74, 222, 128, 0.35);
+  border-radius: 12px;
+  animation: footerInlineReveal 0.16s ease-out;
+}
+
+.scope :global(.cms-footer-platform-chip),
+.scope :global(.cms-footer-service-option) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px 10px;
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 650;
+  text-align: left;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.08s ease;
+}
+
+.scope :global(.cms-footer-platform-chip:hover),
+.scope :global(.cms-footer-service-option:hover) {
+  color: #fff;
+  background: rgba(21, 128, 61, 0.88);
+  border-color: rgba(74, 222, 128, 0.7);
+}
+
+.scope :global(.cms-footer-platform-chip:focus-visible),
+.scope :global(.cms-footer-service-option:focus-visible) {
+  outline: 2px solid #4ade80;
+  outline-offset: 2px;
+}
+
+.scope :global(.cms-footer-platform-chip:active),
+.scope :global(.cms-footer-service-option:active) {
+  transform: scale(0.98);
+}
+
+.scope :global(.cms-footer-service-edit-list) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scope :global(.cms-footer-service-row) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 9px 10px;
+  color: #d1d5db;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 11px;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.scope :global(.cms-footer-service-row:hover) {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(74, 222, 128, 0.38);
+}
+
+.scope :global(.cms-footer-service-copy) {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.scope :global(.cms-footer-service-title) {
+  overflow: hidden;
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scope :global(.cms-footer-service-detail),
+.scope :global(.cms-footer-inline-count),
+.scope :global(.cms-footer-inline-empty),
+.scope :global(.cms-footer-inline-limit) {
+  color: #94a3b8;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.scope :global(.cms-footer-service-row--error .cms-footer-service-detail),
+.scope :global(.cms-footer-inline-limit) {
+  color: #fecaca;
+}
+
+.scope :global(.cms-footer-service-add-tray) {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.scope :global(.cms-footer-service-search) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  color: #94a3b8;
+}
+
+.scope :global(.cms-footer-service-options) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.scope :global(.cms-footer-service-option) {
+  width: 100%;
+}
+
+.scope :global(.cms-footer-service-option span) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scope :global(.cms-inline-list-controls) {
+  flex: 0 0 auto;
+  box-shadow: 0 6px 18px -12px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes footerInlineReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .scope :global(.cms-footer-service-options) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .scope :global(.cms-footer-social-card-head),
+  .scope :global(.cms-footer-service-row) {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .scope :global(.cms-inline-list-controls) {
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scope *,
+  .scope *::before,
+  .scope *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}

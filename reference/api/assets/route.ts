@@ -70,10 +70,31 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({ data: stored, error: null }, { status: 201 });
   } catch (error) {
-    console.error(
-      "[assets] upload failed",
-      error instanceof Error ? error.message : "unknown error",
+    const detail = error instanceof Error ? error.message : "unknown error";
+    console.error("[assets] upload failed", detail);
+
+    // A misconfigured environment is not the editor's fault, and a blanket
+    // "Asset upload failed" gave them nothing to act on.
+    const configProblem =
+      /ENOENT|EROFS|read-only|Missing Supabase storage configuration/i.test(
+        detail,
+      );
+    const permissionProblem = /row-level security|Unauthorized|403/i.test(
+      detail,
     );
+
+    if (configProblem || permissionProblem) {
+      return NextResponse.json(
+        {
+          data: null,
+          error: configProblem
+            ? "Media storage is not configured for this environment."
+            : "Media storage rejected the upload. The storage credentials are not permitted to write.",
+        },
+        { status: 503 },
+      );
+    }
+
     return NextResponse.json(
       { data: null, error: "Asset upload failed" },
       { status: 500 },

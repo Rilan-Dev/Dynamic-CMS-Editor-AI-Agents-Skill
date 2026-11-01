@@ -98,11 +98,11 @@ export function InlineListControls({
   const previousWord = axis === "horizontal" ? "left" : "up";
   const nextWord = axis === "horizontal" ? "right" : "down";
   const iconButton =
-    "h-7 w-7 rounded-full border border-white/20 bg-slate-900/85 p-0 text-white shadow hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-35";
+    "h-7 w-7 rounded-full border border-inverse-foreground/20 bg-inverse/85 p-0 text-inverse-foreground shadow hover:bg-brand hover:text-brand-contrast disabled:cursor-not-allowed disabled:opacity-35";
   const containerClass =
     placement === "inline"
-      ? "cms-inline-list-controls flex shrink-0 items-center gap-1 rounded-full bg-slate-950/80 p-1 shadow-xl backdrop-blur"
-      : "cms-inline-list-controls absolute right-2 top-2 z-40 flex items-center gap-1 rounded-full bg-slate-950/80 p-1 shadow-xl backdrop-blur";
+      ? "cms-inline-list-controls flex shrink-0 items-center gap-1 rounded-full bg-inverse/80 p-1 shadow-xl backdrop-blur"
+      : "cms-inline-list-controls absolute right-2 top-2 z-40 flex items-center gap-1 rounded-full bg-inverse/80 p-1 shadow-xl backdrop-blur";
 
   return (
     <div
@@ -111,7 +111,7 @@ export function InlineListControls({
       aria-label={`${label} controls`}
     >
       {showPosition && (
-        <span className="min-w-8 px-1 text-center text-[11px] font-bold text-white">
+        <span className="min-w-8 px-1 text-center text-[11px] font-bold text-inverse-foreground">
           {index + 1}/{count}
         </span>
       )}
@@ -175,7 +175,7 @@ export function InlineListControls({
           type="button"
           size="icon"
           variant="ghost"
-          className={`${iconButton} hover:bg-red-600`}
+          className={`${iconButton} hover:bg-red-600 hover:text-destructive-foreground`}
           onClick={onRemove}
           title={`Remove ${label}`}
           aria-label={`Remove ${label}`}

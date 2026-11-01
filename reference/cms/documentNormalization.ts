@@ -1,4 +1,12 @@
 import { migrateSocialLinks } from "@/components/footer/socialLinks";
+import { blogSlugFromDocument, isBlogDocument } from "@/components/blog/blogSlug";
+import { readingMinutes } from "@/components/blog/readingTime";
+import {
+  isProjectDocument,
+  projectSlugFromDocument,
+} from "@/components/projects/projectSlug";
+import { uniqueServiceSlugs } from "@/components/services/serviceSlug";
+import { defaultServiceDetail } from "@/content/serviceDetailDefaults";
 import type { JsonArray, JsonObject, JsonValue, PathSegment } from "./json";
 
 const VISIBLE_ARRAY_KEYS = new Set([
@@ -20,6 +28,16 @@ const VISIBLE_ARRAY_KEYS = new Set([
   "highlights",
   "jobs",
   "steps",
+  "children",
+  "points",
+  "body",
+  "posts",
+  "gallery",
+  "serviceRefs",
+  "scope",
+  "categories",
+  "entries",
+  "types",
 ]);
 
 const isJsonObject = (value: JsonValue): value is JsonObject =>
@@ -183,6 +201,79 @@ const ensureCareersLink = (
   ] as JsonArray;
 };
 
+const ensureBlogsLink = (
+  items: JsonValue[],
+  labelKey: "name" | "label",
+): JsonArray => {
+  if (hasHref(items, "/blogs")) return items as JsonArray;
+  return [
+    ...items,
+    {
+      [labelKey]: "Blog",
+      href: "/blogs",
+      icon: "FileText",
+      target: "_self",
+      visible: true,
+    },
+  ] as JsonArray;
+};
+
+/**
+ * Unlike Careers and Blog, Updates is inserted right after Blog (or at the
+ * end when there is no Blog link), so it reads as the next content type in
+ * the navigation rather than trailing after Careers.
+ */
+const ensureUpdatesLink = (
+  items: JsonValue[],
+  labelKey: "name" | "label",
+): JsonArray => {
+  if (hasHref(items, "/updates")) return items as JsonArray;
+  const link: JsonObject = {
+    [labelKey]: "Updates",
+    href: "/updates",
+    icon: "Megaphone",
+    target: "_self",
+    visible: true,
+  };
+  const blogIndex = items.findIndex(
+    (item) => isJsonObject(item) && item.href === "/blogs",
+  );
+  if (blogIndex === -1) return [...items, link] as JsonArray;
+  return [
+    ...items.slice(0, blogIndex + 1),
+    link,
+    ...items.slice(blogIndex + 1),
+  ] as JsonArray;
+};
+
+/**
+ * Unlike Careers and Blog, which are appended at the end, Projects sits
+ * next to Services in the navigation — inserted right after it, or at the
+ * end when no Services link is present.
+ */
+const ensureProjectsLink = (
+  items: JsonValue[],
+  labelKey: "name" | "label",
+): JsonArray => {
+  if (hasHref(items, "/projects")) return items as JsonArray;
+  const link: JsonObject = {
+    [labelKey]: "Projects",
+    href: "/projects",
+    icon: "Building2",
+    target: "_self",
+    visible: true,
+  };
+  const servicesIndex = items.findIndex(
+    (item) => isJsonObject(item) && item.href === "/services",
+  );
+  if (servicesIndex === -1) return [...items, link] as JsonArray;
+  return [
+    ...items.slice(0, servicesIndex + 1),
+    link,
+    ...items.slice(servicesIndex + 1),
+  ] as JsonArray;
+};
+
 const migrateSiteChrome = (document: JsonObject): JsonObject => {
   const next = { ...document };
   const navbar = isJsonObject(next.navbar) ? { ...next.navbar } : {};
@@ -197,7 +288,16 @@ const migrateSiteChrome = (document: JsonObject): JsonObject => {
     };
   }
   if (!Array.isArray(navbar.links)) navbar.links = [];
-  navbar.links = ensureCareersLink(navbar.links as JsonValue[], "name");
+  navbar.links = ensureUpdatesLink(
+    ensureBlogsLink(
+      ensureCareersLink(
+        ensureProjectsLink(navbar.links as JsonValue[], "name"),
+        "name",
+      ),
+      "name",
+    ),
+    "name",
+  );
   navbar.phone =
     typeof navbar.phone === "string" ? navbar.phone : "+97142615654";
   navbar.phoneIcon =
@@ -336,10 +436,19 @@ const migrateSiteChrome = (document: JsonObject): JsonObject => {
       const quickLinks = columns[quickLinksIndex] as JsonObject;
       columns[quickLinksIndex] = {
         ...quickLinks,
-        links: ensureCareersLink(
-          Array.isArray(quickLinks.links)
-            ? (quickLinks.links as JsonValue[])
-            : [],
+        links: ensureUpdatesLink(
+          ensureBlogsLink(
+            ensureCareersLink(
+              ensureProjectsLink(
+                Array.isArray(quickLinks.links)
+                  ? (quickLinks.links as JsonValue[])
+                  : [],
+                "label",
+              ),
+              "label",
+            ),
+            "label",
+          ),
           "label",
         ),
       };
@@ -402,6 +511,225 @@ const migrateSiteChrome = (document: JsonObject): JsonObject => {
   return next;
 };
 
+export const SERVICES_SCHEMA_VERSION = 2;
+
+const titleKey = (value: unknown): string =>
+  typeof value === "string"
+    ? value.toLowerCase().trim().replace(/[^a-z0-9]+/g, " ").trim()
+    : "";
+
+/** Existing flat services that become sub-services of another service. */
+const SERVICE_REPARENTING: Record<string, string> = {
+  "building maintenance": "building contracting",
+  "interior works": "building contracting",
+  "steel structure fabrication": "shade installation",
+  "plumbing works": "electrical works",
+  "industrial floor screeding": "epoxy floor painting",
+  "climate control installation": "greenhouse installation",
+  "retractable roof installation": "greenhouse installation",
+};
+
+/** Sub-services introduced with the hierarchy, seeded once. */
+const NEW_SUB_SERVICES: { parent: string; service: JsonObject }[] = [
+  {
+    parent: "building contracting",
+    service: {
+      title: "Villa Construction",
+      description:
+        "End-to-end villa construction, from foundations and structure to finishes and handover.",
+      icon: "/images/services-icons/building-contracting.svg",
+      image: "/images/services/services-buildcontract.jpeg",
+    },
+  },
+  {
+    parent: "building contracting",
+    service: {
+      title: "Meet Me Room",
+      description:
+        "Purpose-built meet-me rooms with the containment, power and cooling that carrier interconnects require.",
+      icon: "/images/services-icons/building-contracting.svg",
+      image: "/images/services/services-buildcontract.jpeg",
+    },
+  },
+  {
+    parent: "building contracting",
+    service: {
+      title: "Service Block",
+      description:
+        "Service blocks delivered as a complete package — structure, MEP and finishes coordinated on one programme.",
+      icon: "/images/services-icons/building-contracting.svg",
+      image: "/images/services/services-buildcontract.jpeg",
+    },
+  },
+];
+
+/**
+ * One-time conversion of the flat services list into the two-level
+ * hierarchy. Guarded by a schema stamp so an editor's later deletions
+ * are never undone. Re-parented services keep their ids, so existing
+ * footer service references continue to resolve.
+ */
+const migrateServiceHierarchy = (document: JsonObject): JsonObject => {
+  const stamped =
+    typeof document.servicesSchema === "number" &&
+    document.servicesSchema >= SERVICES_SCHEMA_VERSION;
+  if (stamped || !Array.isArray(document.services)) {
+    return stamped
+      ? document
+      : { ...document, servicesSchema: SERVICES_SCHEMA_VERSION };
+  }
+
+  const list = document.services.filter(isJsonObject);
+  const parents = list.filter(
+    (service) => !SERVICE_REPARENTING[titleKey(service.title)],
+  );
+  const parentIndexByTitle = new Map(
+    parents.map((service, index) => [titleKey(service.title), index]),
+  );
+  const childrenByParent = parents.map((service) =>
+    Array.isArray(service.children) ? service.children.filter(isJsonObject) : [],
+  );
+
+  // Seed first, then re-parent, so the new sub-services lead the list.
+  for (const { parent, service } of NEW_SUB_SERVICES) {
+    const index = parentIndexByTitle.get(parent);
+    if (index === undefined) continue;
+    const present = childrenByParent[index].some(
+      (child) => titleKey(child.title) === titleKey(service.title),
+    );
+    if (present) continue;
+    childrenByParent[index] = [...childrenByParent[index], { ...service }];
+  }
+
+  for (const service of list) {
+    const parentTitle = SERVICE_REPARENTING[titleKey(service.title)];
+    if (!parentTitle) continue;
+    const index = parentIndexByTitle.get(parentTitle);
+    if (index === undefined) continue;
+    childrenByParent[index] = [...childrenByParent[index], service];
+  }
+
+  return {
+    ...document,
+    servicesSchema: SERVICES_SCHEMA_VERSION,
+    services: parents.map((service, index) =>
+      childrenByParent[index].length
+        ? { ...service, children: childrenByParent[index] }
+        : service,
+    ),
+  };
+};
+
+const seedDetail = (service: JsonObject): JsonObject => {
+  if (isJsonObject(service.detail)) return service;
+  return {
+    ...service,
+    detail: defaultServiceDetail({
+      title: typeof service.title === "string" ? service.title : "Service",
+      description:
+        typeof service.description === "string" ? service.description : "",
+      image: service.image,
+    }),
+  };
+};
+
+/** Give every service and sub-service a slug and a detail document. */
+const seedServiceFields = (document: JsonObject): JsonObject => {
+  if (!Array.isArray(document.services)) return document;
+  const services = document.services.filter(isJsonObject);
+  const slugs = uniqueServiceSlugs(services);
+
+  return {
+    ...document,
+    services: services.map((service, index) => {
+      const children = Array.isArray(service.children)
+        ? service.children.filter(isJsonObject)
+        : [];
+      const childSlugs = uniqueServiceSlugs(children);
+      const next = seedDetail({ ...service, slug: slugs[index] });
+      return children.length
+        ? {
+            ...next,
+            children: children.map((child, childIndex) =>
+              seedDetail({ ...child, slug: childSlugs[childIndex] }),
+            ),
+          }
+        : next;
+    }),
+  };
+};
+
+const seedBlogPost = (slug: string, document: JsonObject): JsonObject => {
+  const body = Array.isArray(document.body) ? document.body : [];
+  return {
+    ...document,
+    slug: typeof document.slug === "string" && document.slug ? document.slug : slug,
+    status: document.status === "published" ? "published" : "draft",
+    publishedAt:
+      typeof document.publishedAt === "string" && document.publishedAt
+        ? document.publishedAt
+        : new Date().toISOString().slice(0, 10),
+    readingMinutes:
+      typeof document.readingMinutes === "number" && document.readingMinutes > 0
+        ? document.readingMinutes
+        : readingMinutes(body),
+    body,
+  };
+};
+
+const seedBlogIndex = (document: JsonObject): JsonObject => ({
+  ...document,
+  posts: Array.isArray(document.posts) ? document.posts : [],
+});
+
+const seedProject = (slug: string, document: JsonObject): JsonObject => {
+  const facts = isJsonObject(document.facts) ? document.facts : {};
+  return {
+    ...document,
+    slug:
+      typeof document.slug === "string" && document.slug ? document.slug : slug,
+    status: document.status === "published" ? "published" : "draft",
+    facts: {
+      ...facts,
+      valueVisible: facts.valueVisible === true,
+    },
+    scope: Array.isArray(document.scope) ? document.scope : [],
+    gallery: Array.isArray(document.gallery) ? document.gallery : [],
+    serviceRefs: Array.isArray(document.serviceRefs) ? document.serviceRefs : [],
+  };
+};
+
+const seedProjectIndex = (document: JsonObject): JsonObject => ({
+  ...document,
+  projects: Array.isArray(document.projects) ? document.projects : [],
+});
+
+/**
+ * Every entry needs a status, a pinned flag and a real timestamp so the
+ * feed can sort and filter it — an editor-supplied invalid or missing
+ * postedAt is stamped with the current time rather than left unsortable.
+ */
+const seedUpdatesIndex = (document: JsonObject): JsonObject => ({
+  ...document,
+  entries: (Array.isArray(document.entries) ? document.entries : []).map(
+    (entry) => {
+      if (!isJsonObject(entry)) return entry;
+      const postedAt =
+        typeof entry.postedAt === "string" &&
+        entry.postedAt.trim() &&
+        !Number.isNaN(Date.parse(entry.postedAt))
+          ? entry.postedAt
+          : new Date().toISOString();
+      return {
+        ...entry,
+        status: entry.status === "published" ? "published" : "draft",
+        pinned: entry.pinned === true,
+        postedAt,
+      };
+    },
+  ),
+});
+
 export function normalizeCmsDocument(
   slug: string,
   document: JsonObject,
@@ -456,5 +784,26 @@ export function normalizeCmsDocument(
     };
   }
 
-  return normalizeValue(slug, [], normalized) as JsonObject;
+  let withContentDefaults = normalized;
+  if (slug === "services") {
+    withContentDefaults = seedServiceFields(migrateServiceHierarchy(normalized));
+  } else if (slug === "blogs") {
+    withContentDefaults = seedBlogIndex(normalized);
+  } else if (isBlogDocument(slug)) {
+    withContentDefaults = seedBlogPost(
+      blogSlugFromDocument(slug) ?? "post",
+      normalized,
+    );
+  } else if (slug === "projects") {
+    withContentDefaults = seedProjectIndex(normalized);
+  } else if (isProjectDocument(slug)) {
+    withContentDefaults = seedProject(
+      projectSlugFromDocument(slug) ?? "project",
+      normalized,
+    );
+  } else if (slug === "updates") {
+    withContentDefaults = seedUpdatesIndex(normalized);
+  }
+
+  return normalizeValue(slug, [], withContentDefaults) as JsonObject;
 }

@@ -1,43 +1,9 @@
-# components/cms — Inline CMS
+# CMS reference code instructions
 
-## OVERVIEW
+These files are byte-for-byte copies of the pinned SMTS UAT CMS sources, tracked by ../SMTS_UAT_MANIFEST.json. Do not modify them in place to make the reference generic; adapt the code inside a target project or generate a separate portable wrapper.
 
-In-place content editing. Pages render typed defaults from `content/registry.ts`; authorized editors unlock via `?edit=1`, edit inline, autosave drafts, and publish. No separate admin UI.
+Actual data flow: ?edit=1 lazy-loads CmsTools but only an authenticated server cookie unlocks data access. Inline E/EImg/EIcon and list controls update draft. A module external store tracks docs, publishedDocs, dirty state, version and draftRevision. Conditional draft autosave rejects stale writes. View modes: draft, preview, published. POST /api/cms/releases validates and publishes atomically; the old page POST returns 410. Versions and rollback use separate history APIs and DB SQL functions. ClickBlocker prevents normal link/form interactions during draft editing and exempts data-cms-ui and allowed portals.
 
-## DATA FLOW
+Top-level docs: ../../IN_PAGE_EDITOR_INTEGRATION.md, ../../CMS_STORE_REFERENCE.md, ../../CMS_VERSIONING_ROLLBACK_REFERENCE.md and ../../THEME_MEDIA_WIDGETS_REFERENCE.md.
 
-```
-server render → getPageContent (published) → <E path value> primitives (zero-overhead in view mode)
-?edit=1 → CmsRoot lazy-loads CmsTools (code-split) → startEditing(slug) loads page+site+services docs
-edit → setPath (immutable json.ts) → dirty → 1.2s debounced autosave → PUT draft
-publish → validateCmsDocuments → POST publish → revalidatePath
-```
-
-## KEY MODULES
-
-- `store.ts` — module-singleton state (`useSyncExternalStore`): `docs` + `publishedDocs` + `dirty` + `viewMode`; debounced autosave to server + `localStorage`.
-- `editable.tsx` — inline primitives `<E>` (contentEditable), `<EImg>`, `<EIcon>`, `<ERemove>`/`<EAdd>`. View mode renders server markup untouched.
-- `json.ts` — `JsonObject`, `PathSegment[]`, immutable `getAtPath`/`setAtPath`.
-- `documentNormalization.ts` — `normalizeCmsDocument`: FNV-1a stable IDs, social/service/job shape migrations. **Every write path runs through it.**
-- `documentValidation.ts` — `validateCmsDocuments`: pure, pre-publish gate; emits `{code, path, message}`.
-- `CmsRoot.tsx` / `CmsTools.tsx` — code-split entry (`?edit=1` gate, `sessionStorage` unlock flag).
-- `GlobalEditToolbar.tsx` / `AdvancedEditorPanel.tsx` / `DynamicFieldEditor.tsx` — editor chrome (dock, sheet, JSON-path field editor).
-- `animation/` — `SmtsAnimationEditorAdapter` + `scopePaths` (bridge animation-editor ↔ CMS docs).
-
-## DRAFT vs PUBLISH
-
-- Drafts mutable in store; `publishedDocs` is an immutable snapshot loaded at `startEditing`.
-- `viewMode: "draft" | "published"` flips render; `epoch` counter forces primitive remount.
-- Autosave targets **draft only**. Publish = copy draft→published + `revalidatePath`. Discard = reload from `publishedDocs`/fallback.
-- Validation blocks **publish only**, never draft edits.
-
-## AUTH
-
-`POST /api/cms/session` → `cmsKeyMatches` (timing-safe HMAC) → httpOnly `cms_session` cookie (`v1.<nonce>.<sig>`). All mutations guarded by `cmsAuthorized` (`lib/server/cmsAuth.ts`). Dev-only escape: `x-cms-key: dev` header on localhost + `NODE_ENV=development`.
-
-## CONVENTIONS / GOTCHAS
-
-- Two scopes: `"page"` (current slug) + `"site"` (`SITE_SLUG` shared chrome — navbar/footer). Related docs (`services`) preloaded for cross-page editing.
-- Paths are `PathSegment[]`; list items keyed by stable `cmsId` for dnd-kit.
-- Editor bundle is code-split — regular visitors never download it.
-- Tests: behavioral unit + source-inspection (grep source for required exports).
+Validation: compare Git blob hashes against the manifest. Do not claim these snapshots are independently buildable without original @/ aliases, shadcn/Radix and site wiring. Never package company-specific fallback content or the editor key as a reusable default.

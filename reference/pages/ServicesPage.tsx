@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { AnimatedElement } from "@/components/animations/AnimatedElement";
 import { AnimatedPage } from "@/components/animations/AnimatedPage";
@@ -12,13 +13,23 @@ import { setPath, useCmsEditing, useSection } from "@/components/cms/store";
 import {
   SERVICES_PER_PAGE,
   serviceAnchorId,
+  serviceHref,
   visibleOrderedServices,
   type ServiceCatalogItem,
 } from "@/components/services/serviceCatalog";
+import {
+  serviceChildren,
+  summarizeChildren,
+} from "@/components/services/serviceHierarchy";
 import { useServiceAnchorNavigation } from "@/components/services/useServiceAnchorNavigation";
 import { assetSrc } from "@/content/types";
 
 const NEW_WINDOW_MS = 14 * 24 * 60 * 60 * 1000;
+/**
+ * Chips wrap into a fixed two-row area: names stay readable (no mid-word
+ * truncation) while every card keeps the same height.
+ */
+const MAX_CARD_CHIPS = 4;
 
 const asObject = (value: unknown): JsonObject =>
   value && typeof value === "object" && !Array.isArray(value)
@@ -128,13 +139,13 @@ export default function ServicesPage({ content }: { content: JsonObject }) {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="servicesList" label="Services list" className="bg-white py-16">
+      <AnimatedSection id="servicesList" label="Services list" className="bg-background py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12 text-center">
-            <AnimatedElement id="services-list-title" type="heading" label="Services list heading" as="h2" className="mb-4 text-3xl font-bold text-gray-900">
+            <AnimatedElement id="services-list-title" type="heading" label="Services list heading" as="h2" className="mb-4 text-3xl font-bold text-foreground">
               <E path={["description", "title"]} value={String(description.title ?? "")} as="span" />
             </AnimatedElement>
-            <AnimatedElement id="services-list-subtitle" type="text" label="Services list subtitle" as="p" className="mx-auto max-w-3xl text-lg text-gray-700">
+            <AnimatedElement id="services-list-subtitle" type="text" label="Services list subtitle" as="p" className="mx-auto max-w-3xl text-lg text-muted-foreground">
               <E path={["description", "subtitle"]} value={String(description.subtitle ?? "")} as="span" />
             </AnimatedElement>
           </div>
@@ -155,14 +166,14 @@ export default function ServicesPage({ content }: { content: JsonObject }) {
                   label={service.title}
                   sectionId="servicesList"
                   staggerIndex={visibleIndex}
-                  className={`relative overflow-hidden rounded-lg border bg-white shadow-lg transition-[transform,box-shadow,border-color] duration-300 hover:scale-105 focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-green-700 ${
+                  className={`relative flex h-full flex-col overflow-hidden rounded-lg border bg-card shadow-lg transition-[transform,box-shadow,border-color] duration-300 hover:scale-105 focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-brand ${
                     highlightedServiceId === itemId
-                      ? "border-green-700 ring-4 ring-green-500/50 motion-reduce:transition-none"
-                      : "border-gray-200"
+                      ? "border-brand ring-4 ring-brand/50 motion-reduce:transition-none"
+                      : "border-border"
                   }`}
                 >
                   {isNew(service) && (
-                    <span className="absolute left-3 top-3 z-10 rounded-full bg-green-700 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-md">
+                    <span className="absolute left-3 top-3 z-10 rounded-full bg-brand px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-contrast shadow-md">
                       New
                     </span>
                   )}
@@ -177,31 +188,84 @@ export default function ServicesPage({ content }: { content: JsonObject }) {
                       className="h-full w-full object-cover"
                     />
                   </AnimatedElement>
-                  <div className="p-6">
+                  <div className="flex flex-1 flex-col p-6">
                     <AnimatedElement id={`${itemId}:icon`} type="icon" label={`${service.title} icon`} sectionId="servicesList" className="mb-4 h-12 w-12">
                       <EditableIcon
                         path={["services", originalIndex, "icon"]}
                         value={service.icon}
                         alt={service.title}
                         fallback="Wrench"
-                        className="h-full w-full object-contain text-green-700"
+                        className="h-full w-full object-contain text-brand"
                       />
                     </AnimatedElement>
-                    <h3 className="mb-2 text-xl font-bold text-gray-900">
-                      <E path={["services", originalIndex, "title"]} value={service.title} as="span" />
+                    <h3 className="mb-2 line-clamp-1 text-xl font-bold text-foreground">
+                      <Link
+                        href={serviceHref(service)}
+                        className="hover:text-brand-strong focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brand"
+                      >
+                        <E path={["services", originalIndex, "title"]} value={service.title} as="span" />
+                      </Link>
                     </h3>
-                    <p className="text-gray-700">
+                    <p className="line-clamp-3 min-h-[4.5rem] text-muted-foreground">
                       <E path={["services", originalIndex, "description"]} value={String(service.description ?? "")} as="span" />
                     </p>
+                    {(() => {
+                      const summary = summarizeChildren(
+                        serviceChildren(service),
+                        MAX_CARD_CHIPS,
+                      );
+                      if (!summary.total) return null;
+                      return (
+                        <div className="mt-5">
+                          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted-foreground">
+                            {summary.total} specialist{" "}
+                            {summary.total === 1 ? "service" : "services"}
+                          </p>
+                          <ul className="flex h-16 flex-wrap content-start gap-2 overflow-hidden">
+                            {summary.shown.map((child) => (
+                              <li key={String(child.id)}>
+                                <Link
+                                  href={serviceHref({
+                                    slug: String(child.slug ?? ""),
+                                    parentSlug: String(service.slug ?? ""),
+                                  })}
+                                  className="block whitespace-nowrap rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand transition-colors hover:bg-brand-soft-strong hover:text-brand-strong"
+                                >
+                                  {String(child.title ?? "")}
+                                </Link>
+                              </li>
+                            ))}
+                            {summary.extra > 0 && (
+                              <li>
+                                <Link
+                                  href={serviceHref(service)}
+                                  className="block rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground transition-colors hover:bg-accent"
+                                >
+                                  +{summary.extra}
+                                </Link>
+                              </li>
+                            )}
+                          </ul>
+                        </div>
+                      );
+                    })()}
+
+                    <Link
+                      href={serviceHref(service)}
+                      className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-brand transition-colors hover:text-brand-strong"
+                    >
+                      View service
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
                     {editing && ready && (
-                      <p className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      <p className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                         Order
                         <E
                           path={["services", originalIndex, "order"]}
                           value={String(service.order ?? "")}
                           as="span"
                           numeric
-                          className="min-w-8 rounded border border-gray-300 px-2 py-0.5 text-sm text-gray-900"
+                          className="min-w-8 rounded border border-border px-2 py-0.5 text-sm text-foreground"
                         />
                       </p>
                     )}
@@ -219,7 +283,7 @@ export default function ServicesPage({ content }: { content: JsonObject }) {
 
           {pageCount > 1 && (
             <nav className="mt-12 flex items-center justify-center gap-2" aria-label="Services pagination">
-              <button type="button" onClick={() => setPage((current) => Math.max(0, current - 1))} disabled={page === 0} className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40">
+              <button type="button" onClick={() => setPage((current) => Math.max(0, current - 1))} disabled={page === 0} className="rounded-md border border-border px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40">
                 Previous
               </button>
               {Array.from({ length: pageCount }, (_, index) => (
@@ -228,12 +292,12 @@ export default function ServicesPage({ content }: { content: JsonObject }) {
                   type="button"
                   onClick={() => setPage(index)}
                   aria-current={page === index ? "page" : undefined}
-                  className={`h-9 w-9 rounded-md text-sm font-medium transition-colors ${page === index ? "bg-green-700 text-white" : "border border-gray-300 text-gray-700 hover:bg-gray-100"}`}
+                  className={`h-9 w-9 rounded-md text-sm font-medium transition-colors ${page === index ? "bg-brand text-brand-contrast" : "border border-border text-muted-foreground hover:bg-accent"}`}
                 >
                   {index + 1}
                 </button>
               ))}
-              <button type="button" onClick={() => setPage((current) => Math.min(pageCount - 1, current + 1))} disabled={page === pageCount - 1} className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40">
+              <button type="button" onClick={() => setPage((current) => Math.min(pageCount - 1, current + 1))} disabled={page === pageCount - 1} className="rounded-md border border-border px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40">
                 Next
               </button>
             </nav>
@@ -241,14 +305,14 @@ export default function ServicesPage({ content }: { content: JsonObject }) {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="quality" label="Quality assurance" className="bg-green-700 py-16 text-white">
+      <AnimatedSection id="quality" label="Quality assurance" className="bg-band py-16 text-band-foreground">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center gap-12 md:flex-row">
             <div className="md:w-1/2">
               <AnimatedElement id="quality-title" type="heading" label="Quality assurance heading" as="h2" className="mb-6 text-3xl font-bold">
                 <E path={["quality", "title"]} value={String(quality.title ?? "")} as="span" />
               </AnimatedElement>
-              {renderParagraphs("quality", quality, "text-lg text-white/90")}
+              {renderParagraphs("quality", quality, "text-lg text-band-foreground")}
             </div>
             <AnimatedElement id="quality-image" type="image" label="Quality assurance image" className="relative h-100 w-full overflow-hidden rounded-lg md:w-1/2">
               <EImg path={["quality", "image"]} image={quality.image as any} className="h-full w-full object-cover" />
@@ -257,14 +321,14 @@ export default function ServicesPage({ content }: { content: JsonObject }) {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="clientApproach" label="Client-centric approach" className="bg-white py-16">
+      <AnimatedSection id="clientApproach" label="Client-centric approach" className="bg-background py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center gap-12 md:flex-row-reverse">
             <div className="md:w-1/2">
-              <AnimatedElement id="client-approach-title" type="heading" label="Client-centric approach heading" as="h2" className="mb-6 text-3xl font-bold text-gray-900">
+              <AnimatedElement id="client-approach-title" type="heading" label="Client-centric approach heading" as="h2" className="mb-6 text-3xl font-bold text-foreground">
                 <E path={["clientApproach", "title"]} value={String(clientApproach.title ?? "")} as="span" />
               </AnimatedElement>
-              {renderParagraphs("clientApproach", clientApproach, "text-lg text-gray-700")}
+              {renderParagraphs("clientApproach", clientApproach, "text-lg text-muted-foreground")}
             </div>
             <AnimatedElement id="client-approach-image" type="image" label="Client-centric approach image" className="relative h-100 w-full overflow-hidden rounded-lg shadow-xl md:w-1/2">
               <EImg path={["clientApproach", "image"]} image={clientApproach.image as any} className="h-full w-full object-cover" />

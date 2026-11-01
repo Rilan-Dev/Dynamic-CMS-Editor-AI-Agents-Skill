@@ -8,7 +8,7 @@ describe("shared site chrome CMS wiring", () => {
   it("server-loads and passes the published site document", () => {
     const layout = source("app/layout.tsx");
     expect(layout).toContain('getPageContent("site", CONTENT_REGISTRY.site)');
-    expect(layout).toContain("<Navbar content={siteContent}");
+    expect(layout).toContain("<Navbar\n                    content={siteContent}");
     expect(layout).toContain("<Footer content={siteContent}");
   });
 
@@ -19,15 +19,27 @@ describe("shared site chrome CMS wiring", () => {
       '["navbar", "brand", "highlight"]',
       '["navbar", "brand", "suffix"]',
       '["navbar", "links", index, "name"]',
-      '["navbar", "links", index, "icon"]',
-      '["navbar", "phone"]',
-      '["navbar", "phoneIcon"]',
       '["navbar", "quoteButton", "label"]',
       '["navbar", "quoteButton", "icon"]',
     ]) {
       expect(navbar).toContain(fragment);
     }
     expect(navbar).toContain("const href = typeof link.href");
+  });
+
+  it("renders navigation links as text only and keeps the phone out of the bar", () => {
+    const navbar = source("components/navbar.tsx");
+    expect(navbar).not.toContain('["navbar", "links", index, "icon"]');
+    expect(navbar).not.toContain("tel:");
+  });
+
+  it("floats the call button beside WhatsApp, editing the navbar phone", () => {
+    const footer = source("components/footer.tsx");
+    expect(footer).toContain('["navbar", "phone"]');
+    expect(footer).toContain('["navbar", "phoneIcon"]');
+    expect(footer).toContain("href={`tel:${");
+    const stack = footer.slice(footer.indexOf("fixed bottom-6"));
+    expect(stack.indexOf("tel:")).toBeLessThan(stack.indexOf('["footer", "whatsapp", "icon"]'));
   });
 
   it("renders footer columns, contacts, social, legal and WhatsApp from the site document", () => {

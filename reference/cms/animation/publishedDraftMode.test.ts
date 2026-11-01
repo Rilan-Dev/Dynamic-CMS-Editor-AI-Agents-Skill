@@ -14,6 +14,6 @@ it("keeps draft and published documents in separate store collections", () => {
 it("keeps publish as an explicit operation", () => {
   const source = readFileSync(resolve(process.cwd(), "components/cms/store.ts"), "utf8");
   expect(source).toContain("export async function publishDraft");
-  expect(source).toContain("await CmsService.publish(slug)");
+  expect(source).toContain("await CmsService.publishRelease");
   expect(source).not.toContain("publishDraft();\n  scheduleSave");
 });

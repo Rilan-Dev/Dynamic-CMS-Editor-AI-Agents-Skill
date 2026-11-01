@@ -7,6 +7,18 @@ const source = (path: string) =>
   readFileSync(resolve(process.cwd(), path), "utf8");
 
 describe("CMS media and icon page wiring", () => {
+  it("renders home page service icons from the services catalogue", () => {
+    const home = source("components/pages/HomePage.tsx");
+    const carousel = source("components/home/ServiceCarousel.tsx");
+
+    // The home page no longer owns a duplicate service list; icons belong to
+    // the services document and stay editable on the Services page.
+    expect(home).toContain("buildServiceMenu(");
+    expect(home).not.toContain('["featuredServices"');
+    expect(carousel).toContain("<ReadOnlyIcon");
+    expect(carousel).toContain("entry.icon");
+  });
+
   it("keeps string-backed service and client media as strings", () => {
     const services = source("components/pages/ServicesPage.tsx");
     const clients = source("components/client-logos.tsx");
@@ -33,7 +45,6 @@ describe("CMS media and icon page wiring", () => {
   it("routes content-owned icons through EditableIcon", () => {
     const directExpectations: Array<[string, string]> = [
       ["components/pages/ServicesPage.tsx", '["services", originalIndex, "icon"]'],
-      ["components/pages/HomePage.tsx", '["featuredServices", index, "icon"]'],
       ["components/pages/HomePage.tsx", '["whyChoose", "cards", index, "icon"]'],
       ["components/pages/CertificationsPage.tsx", '["benefits", index, "icon"]'],
       ["components/pages/ContactPage.tsx", '["infoCards", index, "icon"]'],

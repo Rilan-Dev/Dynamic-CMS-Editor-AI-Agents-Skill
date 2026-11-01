@@ -1,5 +1,8 @@
 import type { JsonObject } from "@/components/cms/json";
 import type { PageContentEntry } from "@/lib/server/contentStore";
+import type { CmsReleaseRequest, CmsReleaseResult } from "@/lib/server/cmsRelease";
+import type { CmsHistoryPage, CmsHistorySnapshot } from "@/lib/server/cmsHistory";
+import type { CmsRestoreResult, CmsRestoreMode } from "@/lib/server/cmsRestore";
 
 /** Remove the raw-key storage used by older CMS builds. */
 export function clearLegacyCmsKey(): void {
@@ -49,28 +52,46 @@ export const CmsService = {
   async logout(): Promise<void> {
     await fetch("/api/cms/session", { method: "DELETE" }).then(sessionResponse);
   },
+  listHistory(slug: string, before: number | null = null): Promise<CmsHistoryPage> {
+    const suffix = before === null ? "" : `?before=${before}`;
+    return fetch(`/api/cms/history/${encodeURIComponent(slug)}${suffix}`, {
+      cache: "no-store",
+    }).then((r)=>unwrap<CmsHistoryPage>(r));
+  },
+  restoreHistory(slug: string, sourceVersion: number, input: {
+    requestId: string; mode: CmsRestoreMode;
+    expectedVersion: number; expectedDraftRevision: number;
+  }): Promise<CmsRestoreResult> {
+    return fetch(`/api/cms/history/${encodeURIComponent(slug)}/${sourceVersion}/restore`,{
+      method:"POST",headers:headers(),body:JSON.stringify(input),
+    }).then(r=>unwrap<CmsRestoreResult>(r));
+  },
+  historicalSnapshot(slug: string, version: number): Promise<CmsHistorySnapshot> {
+    return fetch(`/api/cms/history/${encodeURIComponent(slug)}/${version}`, {
+      cache: "no-store",
+    }).then((r)=>unwrap<CmsHistorySnapshot>(r));
+  },
   getEntry(slug: string): Promise<PageContentEntry | null> {
     return fetch(`/api/cms/pages/${slug}`, { cache: "no-store" }).then((r) =>
       unwrap<PageContentEntry | null>(r),
     );
   },
-  saveDraft(slug: string, draft: JsonObject): Promise<PageContentEntry> {
+  saveDraft(slug: string, draft: JsonObject, expectedVersion: number, expectedDraftRevision: number): Promise<PageContentEntry> {
     return fetch(`/api/cms/pages/${slug}`, {
       method: "PUT",
       headers: headers(),
-      body: JSON.stringify({ draft }),
+      body: JSON.stringify({ draft, expectedVersion, expectedDraftRevision }),
     }).then((r) => unwrap<PageContentEntry>(r));
   },
-  publish(slug: string): Promise<PageContentEntry> {
-    return fetch(`/api/cms/pages/${slug}`, {
-      method: "POST",
-      headers: headers(),
-    }).then((r) => unwrap<PageContentEntry>(r));
+  publishRelease(request: CmsReleaseRequest): Promise<CmsReleaseResult> {
+    return fetch("/api/cms/releases", {
+      method: "POST", headers: headers(), body: JSON.stringify(request),
+    }).then((r) => unwrap<CmsReleaseResult>(r));
   },
-  discard(slug: string): Promise<PageContentEntry | null> {
+  discard(slug: string, expectedVersion: number, expectedDraftRevision: number): Promise<PageContentEntry> {
     return fetch(`/api/cms/pages/${slug}`, {
-      method: "DELETE",
-      headers: headers(),
-    }).then((r) => unwrap<PageContentEntry | null>(r));
+      method: "DELETE", headers: headers(),
+      body: JSON.stringify({ expectedVersion, expectedDraftRevision }),
+    }).then((r) => unwrap<PageContentEntry>(r));
   },
 };

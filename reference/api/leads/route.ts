@@ -1,33 +1,50 @@
 import { NextResponse } from "next/server";
 import { leadSchema } from "@/lib/schemas";
+import { saveLead } from "@/lib/server/db";
+import { sendLeadNotification } from "@/lib/server/leadNotification";
+import { createRateLimiter } from "./rateLimit";
+import { resolveTrustedClientIp } from "./trustedClientIp";
 
-/**
- * Lead intake (contact form).
- * P4 (data layer) persists to the `leads` table via leadRepo and adds
- * notifications; until then the endpoint validates and acknowledges so
- * the production form flow is real end-to-end.
- */
+const limiter = createRateLimiter({
+  windowMs: 10 * 60 * 1000,
+  maxHits: 5,
+});
+
 export async function POST(request: Request) {
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
+  if (limiter.isLimited(resolveTrustedClientIp(request))) {
     return NextResponse.json(
-      { data: null, error: "Invalid JSON body" },
-      { status: 400 }
+      { data: null, error: "Too many requests" },
+      { status: 429 },
     );
   }
 
+  const body = await request.json().catch(() => null);
   const parsed = leadSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { data: null, error: "Validation failed", issues: parsed.error.flatten().fieldErrors },
-      { status: 422 }
+      {
+        data: null,
+        error: "Validation failed",
+        issues: parsed.error.flatten().fieldErrors,
+      },
+      { status: 422 },
     );
   }
 
-  // TODO(P4): await leadRepo.create(parsed.data)
-  console.info("[lead]", parsed.data.email, parsed.data.service);
+  const lead = parsed.data;
+  const [stored, notified] = await Promise.all([
+    saveLead(lead),
+    sendLeadNotification(lead),
+  ]);
+  if (!stored && !notified) {
+    return NextResponse.json(
+      { data: null, error: "Lead delivery unavailable" },
+      { status: 503 },
+    );
+  }
 
-  return NextResponse.json({ data: { received: true }, error: null }, { status: 201 });
+  return NextResponse.json(
+    { data: { received: true }, error: null },
+    { status: 201 },
+  );
 }

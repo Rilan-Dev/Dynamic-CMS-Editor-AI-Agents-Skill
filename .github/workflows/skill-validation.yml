@@ -3,6 +3,8 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '13 3 * * 1'
 permissions:
   contents: read
 jobs:
@@ -14,4 +16,10 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/validate-skill.mjs
+      - run: node scripts/check-source-parity.mjs
       - run: node --test tests/*.test.mjs
+      - name: Detect newer upstream UAT revision (scheduled only)
+        if: github.event_name == 'schedule'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/check-source-parity.mjs --remote

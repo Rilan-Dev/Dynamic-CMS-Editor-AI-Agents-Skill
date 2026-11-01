@@ -89,7 +89,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               label={title || `${path} certificate ${index + 1}`}
               sectionId={path}
               staggerIndex={index}
-              className={`relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg ${
+              className={`relative flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-lg ${
                 visible ? "" : "opacity-55 ring-2 ring-amber-400"
               }`}
             >
@@ -129,7 +129,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                 type="image"
                 label={`${title || "Certificate"} image`}
                 sectionId={path}
-                className={`relative w-full ${imageHeight}`}
+                className={`relative w-full bg-card dark:bg-inverse-foreground ${imageHeight}`}
               >
                 <EImg
                   path={[path, index, "image"]}
@@ -153,7 +153,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                         path={[path, index, "icon"]}
                         value={certificate.icon}
                         fallback="Award"
-                        className="h-8 w-8 text-green-700"
+                        className="h-8 w-8 text-brand"
                       />
                     </AnimatedElement>
                     <AnimatedElement
@@ -162,7 +162,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                       label={`${title || "Certificate"} title`}
                       sectionId={path}
                       as="h3"
-                      className="text-xl font-bold text-gray-900"
+                      className="text-xl font-bold text-foreground"
                     >
                       <E path={[path, index, "title"]} value={title} as="span" />
                     </AnimatedElement>
@@ -173,7 +173,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                     label={`${title || "Certificate"} description`}
                     sectionId={path}
                     as="p"
-                    className="text-gray-700"
+                    className="text-muted-foreground"
                   >
                     <E
                       path={[path, index, "description"]}
@@ -184,7 +184,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                   </AnimatedElement>
 
                   {(editActive || issuer || issuedAt || certificateNumber) && (
-                    <dl className="mt-4 space-y-2 border-t border-gray-100 pt-4 text-sm text-gray-600">
+                    <dl className="mt-4 space-y-2 border-t border-border pt-4 text-sm text-muted-foreground">
                       {(editActive || issuer) && (
                         <div>
                           <dt className="font-semibold">Issuer</dt>
@@ -221,7 +221,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                       href={verificationUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex text-sm font-semibold text-green-700 hover:text-green-900"
+                      className="mt-4 inline-flex text-sm font-semibold text-brand hover:text-brand-strong"
                     >
                       Verify certificate
                     </a>
@@ -292,7 +292,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="registrations" label="Company registrations" className="bg-white py-16">
+      <AnimatedSection id="registrations" label="Company registrations" className="bg-background py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12 text-center">
             <AnimatedElement
@@ -300,7 +300,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               type="heading"
               label="Company registrations heading"
               as="h2"
-              className="mb-4 text-3xl font-bold text-gray-900"
+              className="mb-4 text-3xl font-bold text-foreground"
             >
               <E
                 path={["registrationsIntro", "title"]}
@@ -313,7 +313,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               type="text"
               label="Company registrations subtitle"
               as="p"
-              className="mx-auto max-w-3xl text-lg text-gray-700"
+              className="mx-auto max-w-3xl text-lg text-muted-foreground"
             >
               <E
                 path={["registrationsIntro", "subtitle"]}
@@ -326,7 +326,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="isoCertifications" label="ISO certifications" className="bg-white py-16">
+      <AnimatedSection id="isoCertifications" label="ISO certifications" className="bg-background py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12 text-center">
             <AnimatedElement
@@ -334,7 +334,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               type="heading"
               label="ISO certifications heading"
               as="h2"
-              className="mb-4 text-3xl font-bold text-gray-900"
+              className="mb-4 text-3xl font-bold text-foreground"
             >
               <E path={["isoIntro", "title"]} value={String(isoIntro.title ?? "")} as="span" />
             </AnimatedElement>
@@ -343,7 +343,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               type="text"
               label="ISO certifications subtitle"
               as="p"
-              className="mx-auto max-w-3xl text-lg text-gray-700"
+              className="mx-auto max-w-3xl text-lg text-muted-foreground"
             >
               <E
                 path={["isoIntro", "subtitle"]}
@@ -356,7 +356,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="appreciation" label="Certificate of appreciation" className="bg-gray-50 py-16">
+      <AnimatedSection id="appreciation" label="Certificate of appreciation" className="bg-muted py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12 text-center">
             <AnimatedElement
@@ -364,7 +364,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               type="heading"
               label="Appreciation certificate heading"
               as="h2"
-              className="mb-4 text-3xl font-bold text-gray-900"
+              className="mb-4 text-3xl font-bold text-foreground"
             >
               <E
                 path={["appreciation", "title"]}
@@ -377,7 +377,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               type="text"
               label="Appreciation certificate description"
               as="p"
-              className="mx-auto max-w-2xl text-lg text-gray-700"
+              className="mx-auto max-w-2xl text-lg text-muted-foreground"
             >
               <E
                 path={["appreciation", "description"]}
@@ -391,7 +391,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               id="appreciation-image"
               type="image"
               label="Appreciation certificate image"
-              className="relative h-[400px] w-full max-w-4xl overflow-hidden rounded-lg border border-gray-200 shadow-lg"
+              className="relative h-[400px] w-full max-w-4xl overflow-hidden rounded-lg border border-border bg-card shadow-lg dark:bg-inverse-foreground"
             >
               <EImg
                 path={["appreciation", "image"]}
@@ -403,7 +403,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="safety" label="Safety standards" className="bg-gray-50 py-16">
+      <AnimatedSection id="safety" label="Safety standards" className="bg-muted py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center gap-12 md:flex-row-reverse">
             <div className="md:w-1/2">
@@ -412,7 +412,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                 type="heading"
                 label="Safety standards heading"
                 as="h2"
-                className="mb-6 text-3xl font-bold text-gray-900"
+                className="mb-6 text-3xl font-bold text-foreground"
               >
                 <E path={["safety", "title"]} value={String(safety.title ?? "")} as="span" />
               </AnimatedElement>
@@ -427,8 +427,8 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                     as="p"
                     className={
                       index < paragraphs.length - 1
-                        ? "mb-4 text-lg text-gray-700"
-                        : "text-lg text-gray-700"
+                        ? "mb-4 text-lg text-muted-foreground"
+                        : "text-lg text-muted-foreground"
                     }
                   >
                     <E path={["safety", "paragraphs", index]} value={text} as="span" />
@@ -452,7 +452,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="benefits" label="Certification benefits" className="bg-white py-16">
+      <AnimatedSection id="benefits" label="Certification benefits" className="bg-background py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12 text-center">
             <AnimatedElement
@@ -460,7 +460,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               type="heading"
               label="Certification benefits heading"
               as="h2"
-              className="mb-4 text-3xl font-bold text-gray-900"
+              className="mb-4 text-3xl font-bold text-foreground"
             >
               <E
                 path={["benefitsIntro", "title"]}
@@ -473,7 +473,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
               type="text"
               label="Certification benefits subtitle"
               as="p"
-              className="mx-auto max-w-3xl text-lg text-gray-700"
+              className="mx-auto max-w-3xl text-lg text-muted-foreground"
             >
               <E
                 path={["benefitsIntro", "subtitle"]}
@@ -495,16 +495,16 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                     label={String(benefit.title ?? `Benefit ${index + 1}`)}
                     sectionId="benefits"
                     staggerIndex={index}
-                    className="rounded-lg border border-gray-200 p-6"
+                    className="rounded-lg border border-border p-6"
                   >
                     <div className="mb-4 flex items-center">
                       <EditableIcon
                         path={["benefits", index, "icon"]}
                         value={benefit.icon}
                         fallback="CheckCircle"
-                        className="mr-3 h-6 w-6 text-green-700"
+                        className="mr-3 h-6 w-6 text-brand"
                       />
-                      <h3 className="text-xl font-bold text-gray-900">
+                      <h3 className="text-xl font-bold text-foreground">
                         <E
                           path={["benefits", index, "title"]}
                           value={String(benefit.title ?? "")}
@@ -512,7 +512,7 @@ export default function CertificationsPage({ content }: { content: JsonObject })
                         />
                       </h3>
                     </div>
-                    <p className="text-gray-700">
+                    <p className="text-muted-foreground">
                       <E
                         path={["benefits", index, "description"]}
                         value={String(benefit.description ?? "")}

@@ -1,0 +1,43 @@
+{
+  "target": {
+    "framework": "unknown until inspected",
+    "repository": "example/site",
+    "branch": "feature/cms-migration"
+  },
+  "routes": [
+    "/",
+    "/about"
+  ],
+  "baseline": {
+    "commit": "capture actual SHA",
+    "screenshots": "required at desktop/tablet/mobile"
+  },
+  "contentFields": [
+    {
+      "route": "/",
+      "source": "existing home hero heading",
+      "cmsPath": "pages.home.hero.title",
+      "kind": "text",
+      "verification": "draft-preview-publish-reload-rollback and screenshot parity"
+    },
+    {
+      "route": "/",
+      "source": "existing hero image",
+      "cmsPath": "pages.home.hero.image",
+      "kind": "image",
+      "verification": "asset rendering, alt text, responsive crop and rollback"
+    },
+    {
+      "route": "/about",
+      "source": "existing about introduction",
+      "cmsPath": "pages.about.intro",
+      "kind": "richtext",
+      "verification": "sanitization, draft-preview-publish and visual parity"
+    }
+  ],
+  "acceptance": {
+    "visual": "unverified until screenshots compared",
+    "security": "unverified until tests run",
+    "rollback": "unverified until exercised"
+  }
+}

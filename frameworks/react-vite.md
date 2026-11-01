@@ -1,0 +1,2 @@
+# React / Vite migration adapter
+Identify router, static hosting versus API backend, data fetching and hydration model. Vite environment variables prefixed VITE_ are public: never put CMS secrets there. Preserve JSX, CSS and component structure. Provide a real authorized server or external secure CMS API for persistence; a browser-only localStorage CMS is not production persistence. Keep preview separate from public content; test deep-link refresh and static-host rewrites. Ensure public builds do not bundle editor-only dependencies unnecessarily.

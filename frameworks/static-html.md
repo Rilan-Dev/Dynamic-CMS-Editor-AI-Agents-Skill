@@ -1,0 +1,2 @@
+# Static HTML/CSS/JS migration adapter
+Inventory every HTML page, partial, stylesheet, script, asset and deployment mechanism. Preserve original DOM/CSS and existing JS interactions. Choose either build-time generated pages with an authenticated editing/publishing backend, or runtime content hydration with explicit no-JS and SEO tradeoffs. Do not claim a purely static site can securely save drafts or publish without a backend/service. Keep CSS selectors, links, responsive images and navigation stable. Test generated output diffs and production publish rollback.

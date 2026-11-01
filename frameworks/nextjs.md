@@ -1,0 +1,2 @@
+# Next.js migration adapter
+Inspect App Router versus Pages Router, server/client boundaries, SSR/SSG/ISR, cache tags and revalidation. Preserve route shells, metadata, image optimization, font loading, streaming and hydration. Resolve published content on the server; isolate editor chrome to authenticated client islands. Maintain server-only storage and authorization. Check preview cookies, cache invalidation, dynamic routes, and draft/published isolation. Do not assume SMTS paths or Next.js 16.

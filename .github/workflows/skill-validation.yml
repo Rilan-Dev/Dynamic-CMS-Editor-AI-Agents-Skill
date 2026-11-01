@@ -14,3 +14,4 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/validate-skill.mjs
+      - run: node --test tests/*.test.mjs
